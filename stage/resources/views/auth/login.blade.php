@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -13,8 +13,8 @@
 
                         <div class="row mb-3 d-flex justify-content-center align-items-center ">
                             
-                            <div class="col-7 ">
-                                <input id="userName" type="text" class="form-control @error('userName') is-invalid @enderror" name="userName" value="{{ old('userName') }}" required autocomplete="userName" autofocus>
+                            <div class="col-8 ">
+                                <input id="userName" type="text" class=" text-end form-control @error('userName') is-invalid @enderror" name="userName" value="{{ old('userName') }}" required autocomplete="userName" autofocus>
                                 
                                 @error('userName')
                                 <span class="invalid-feedback" role="alert">
@@ -27,8 +27,8 @@
 
                         <div class="row mb-3  d-flex justify-content-center align-items-center">
                             
-                            <div class="col-7">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <div class="col-8">
+                                <input id="password" type="password" class="text-end form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -41,13 +41,13 @@
 
                         <div class="row mb-5   ">
                             <div class="col-6 d-flex  offset-3">
-                                <div class="form-check">
+                                <div class="form-check ">
                                     
-                                    <input class="form-check-input " type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                     <label class="form-check-label " for="remember">
                                         {{ __('msg.rememberMe') }}
                                     </label>
                                 </div>
+                                <input class="form-check-input offset-1" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                             </div>
                         </div>
 
