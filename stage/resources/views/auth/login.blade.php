@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                
 
-                <div class="card-body">
+                <div class="card-body ">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3 d-flex justify-content-center align-items-center ">
+                        <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center ">
                             
                             <div class="col-8 ">
                                 <input id="userName" type="text" class=" text-end form-control @error('userName') is-invalid @enderror" name="userName" value="{{ old('userName') }}" required autocomplete="userName" autofocus>
