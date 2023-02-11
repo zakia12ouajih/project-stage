@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -11,7 +11,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="row mb-3 d-flex justify-content-center align-items-center">
+                        <div class="row mb-3 d-flex justify-content-center align-items-center ">
                             
                             <div class="col-7 ">
                                 <input id="userName" type="text" class="form-control @error('userName') is-invalid @enderror" name="userName" value="{{ old('userName') }}" required autocomplete="userName" autofocus>
@@ -39,20 +39,20 @@
                             <label for="password" class="col-3 col-form-label text-end">{{ __('msg.password') }}</label>
                         </div>
 
-                        <div class="row mb-5  justify-items-center align-items-center">
-                            <div class="col-md-8 offset-3  ">
-                                <div class="form-check  ">
+                        <div class="row mb-5   ">
+                            <div class="col-6 d-flex  offset-3">
+                                <div class="form-check">
                                     
-                                    <label class="form-check-label" for="remember">
+                                    <input class="form-check-input " type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="form-check-label " for="remember">
                                         {{ __('msg.rememberMe') }}
                                     </label>
-                                    <input class="form-check-input mx-1" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 </div>
                             </div>
                         </div>
 
                         <div class="row mb-2 justify-content-center align-items-center">
-                            <div class="col-md-8 mb-2 offset-md-5 ">
+                            <div class="col-6 mb-2 offset-2 ">
                                 <button type="submit" class="btn btn-primary ">
                                     {{ __('msg.login') }}
                                 </button><br>
