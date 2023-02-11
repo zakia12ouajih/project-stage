@@ -13,7 +13,7 @@
 
                         <div class="row mb-3 mt-3 justify-content-center align-items-center">
                             
-                            <div class="col-md-8 d-flex">
+                            <div class="col-6 d-flex">
                                 <input id="firstName" type="text" class=" text-end form-control @error('firstName') is-invalid @enderror" name="firstName" value="{{ old('firstName') }}" required autocomplete="firstName" autofocus>
                                 
                                 @error('firstName')
@@ -21,12 +21,12 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <label for="firstName" class="col-md-4 col-form-label text-md-end">{{ __('msg.firstName') }}</label>
                             </div>
+                            <label for="firstName" class="col-3 col-form-label text-md-end">{{ __('msg.firstName') }}</label>
                         </div>
                         <div class="row mb-3 justify-content-center align-items-center">
                             
-                            <div class="col-md-8 d-flex">
+                            <div class="col-6 d-flex">
                                 <input id="lastName" type="text" class=" text-end form-control @error('lastName') is-invalid @enderror" name="lastName" value="{{ old('lastName') }}" required autocomplete="lastName" autofocus>
                                 
                                 @error('lastName')
@@ -34,12 +34,12 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <label for="lastName" class="col-md-4 col-form-label text-md-end">{{ __('msg.lastName') }}</label>
                             </div>
+                            <label for="lastName" class="col-3 col-form-label text-md-end">{{ __('msg.lastName') }}</label>
                         </div>
                         <div class="row mb-3  justify-content-center align-items-center">
                             
-                            <div class="col-md-8 d-flex">
+                            <div class="col-6 d-flex">
                                 <input id="userName" type="text" class=" text-end form-control @error('userName') is-invalid @enderror" name="userName" value="{{ old('userName') }}" required autocomplete="userName" autofocus>
                                 
                                 @error('userName')
@@ -47,27 +47,27 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <label for="userName" class="col-md-4 col-form-label text-md-end">{{ __('msg.userName') }}</label>
                             </div>
+                            <label for="userName" class="col-3 col-form-label text-md-end">{{ __('msg.userName') }}</label>
                         </div>
 
                         <div class="row mb-3 justify-content-center align-items-center">
                             
-                            <div class="col-md-8 d-flex">
+                            <div class="col-6 ">
                                 <input id="email" type="email" class=" text-end form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                 
                                 @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                <span class="invalid-feedback text-end" role="alert">
+                                    <strong>{{ __('msg.emailTakken') }}</strong>
                                 </span>
                                 @enderror
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('msg.email') }}</label>
                             </div>
+                            <label for="email" class="col-3 col-form-label text-md-end">{{ __('msg.email') }}</label>
                         </div>
 
                         <div class="row mb-3 justify-content-center align-items-center">
                             
-                            <div class="col-md-8 d-flex">
+                            <div class="col-6 d-flex">
                                 <input id="password" type="password" class=" text-end form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                 
                                 @error('password')
@@ -75,16 +75,16 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('msg.password') }}</label>
                             </div>
+                            <label for="password" class="col-3 col-form-label text-md-end">{{ __('msg.password') }}</label>
                         </div>
 
                         <div class="row mb-5 justify-content-center align-items-center">
                             
-                            <div class="col-md-8 d-flex">
+                            <div class="col-6 d-flex">
                                 <input id="password-confirm" type="password" class="  text-end form-control" name="password_confirmation" required autocomplete="new-password">
-                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('msg.confirm-password') }}</label>
                             </div>
+                            <label for="password-confirm" class="col-3 col-form-label text-md-end">{{ __('msg.confirm-password') }}</label>
                         </div>
 
                         <div class="row mb-3 justify-content-center align-items-center">

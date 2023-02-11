@@ -11,5 +11,6 @@ return[
    'confirm-password' => 'تأكيد كلمة المرور',
    'rememberMe' => 'تذكرني على هذا الجهاز',
    'forgotPwd' => 'نسيت كلمة المرور ؟',
+   'emailTakken' => 'البريد الالكتروني مستعمل'
 ]
 ?>
