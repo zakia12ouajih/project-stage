@@ -42,8 +42,9 @@
          </ul>
          <div class="offcanvas bg-light bg-gradient offcanvas-end" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-               <h4 class="offcanvas-title" id="offcanvasNavbarLabel">hello {{ Auth::user()->userName }}</h4>
+            <div class="offcanvas-header justify-content-between">
+               <p></p>
+               <h2 class="offcanvas-title " id="offcanvasNavbarLabel">{{ Auth::user()->userName }} {{ __('msg.hello') }} </h2>
                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
