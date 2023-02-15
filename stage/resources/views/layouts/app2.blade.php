@@ -52,13 +52,6 @@
                   <li class="nav-item">
                      <a class="nav-link text-center" href="#">الصفحة الرئيسية</a>
                   </li>
-                  <li class="nav-item ">
-                     @yield('crud_cas')
-                     {{-- <a id="#demo2"  class="collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right flex-row-reverse mx-1" aria-current="page"  aria-haspopup="true" href="#">les cas</a>
-                     <div id="demo2">
-                     
-                     </div> --}}
-                  </li>
                   <li class="nav-item">
                      @yield('enter_donnee')
                         {{-- <a href="#" class="collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right " data-bs-toggle="collapse" data-bs-target="#demo1">ادخال حصيلة الشهر</a>
@@ -66,6 +59,13 @@
                      <div id="demo1" class="collapse">
                         <a class="dropdown-item text-center" href='#'>جنحي</a>
                         <a class="dropdown-item text-center" href="#">مدني</a>
+                     </div> --}}
+                  </li>
+                  <li class="nav-item ">
+                     @yield('crud_cas')
+                     {{-- <a id="#demo2"  class="collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right flex-row-reverse mx-1" aria-current="page"  aria-haspopup="true" href="#">les cas</a>
+                     <div id="demo2">
+                     
                      </div> --}}
                   </li>
                   <li class="nav-item ">
