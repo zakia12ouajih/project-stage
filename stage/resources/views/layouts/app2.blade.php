@@ -86,6 +86,30 @@
                   <li class="nav-item">
                      @yield('voir_les_utilisateurs')
                   </li>
+                  <li class="nav-item">
+                     <a href="#" class="collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right " data-bs-toggle="collapse" data-bs-target="#demo3">{{ __('msg.logout') }}</a>             
+                     @guest
+                     @if (Route::has('login'))
+                     <a class="nav-link" href="{{ route('login') }}"></a>
+                     @endif
+                     @else
+                     <li class="nav-item ">
+                        
+                        
+                                 <div id="demo3" class="collapse">
+                                 <a class="dropdown-item text-center" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    {{ __('msg.logout') }}
+                                 </a>
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                 </form>
+                              </div>
+                           </li>
+                        @endguest 
+                     </div>
+                  </li>
                </ul>
             </div>
          </div>
