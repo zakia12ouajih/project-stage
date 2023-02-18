@@ -5,9 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\cas_type;
 use App\Http\Requests\Storecas_typeRequest;
 use App\Http\Requests\Updatecas_typeRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CasTypeController extends Controller
 {
+
+    public function ajoute(Request $request)
+    {
+        DB::table('cas_types')->insert(
+            [
+                'code_type' => $request->code_type,
+                'nom_type' => $request->nom_type,
+            ]
+        );
+        return redirect()->Route('ajouter_cas');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,6 +30,21 @@ class CasTypeController extends Controller
     {
         //
     }
+    public function viewCas()
+    {
+        $data = DB::table('cas_types')->paginate(5);
+        return view('admin.viewCas', compact('data'));
+    }
+
+    public function modifier(Request $request, $id)
+    {
+        DB::table('cas_types')->where('id', $id)->update([
+            'code_type' => $request->code_type,
+            'nom_type' => $request->nom_type,
+        ]);
+        return redirect()->Route('viewCas');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +53,7 @@ class CasTypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.formCas');
     }
 
     /**
@@ -56,9 +84,10 @@ class CasTypeController extends Controller
      * @param  \App\Models\cas_type  $cas_type
      * @return \Illuminate\Http\Response
      */
-    public function edit(cas_type $cas_type)
+    public function edit($id)
     {
-        //
+        $modi = DB::table('cas_types')->where('id', $id)->first();
+        return view('admin.editCas', compact('modi'));
     }
 
     /**
@@ -79,8 +108,9 @@ class CasTypeController extends Controller
      * @param  \App\Models\cas_type  $cas_type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cas_type $cas_type)
+    public function destroy($id)
     {
-        //
+        DB::table('cas_types')->where('id', $id)->delete();
+        return redirect()->route('viewCas');
     }
 }

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CasCivilController;
+use App\Http\Controllers\CasDelisController;
+use App\Http\Controllers\CasTypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +19,34 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('admin')->middleware('auth')->group(function () {
+
+    Route::controller(CasTypeController::class)->group(function () {
+        Route::get('/form', 'create')->name('ajouter_cas');
+        Route::post('/form/add', 'ajoute');
+        Route::get('/aff_table', 'viewCas')->name('viewCas');
+        Route::get('/edit/{id}', 'edit');
+        Route::put('/mod/{id}', 'modifier');
+        Route::get('/destroy/{id}', 'destroy');
+    });
+    Route::controller(CasCivilController::class)->group(function () {
+        Route::post('/data_civil/add', 'ajoute');
+        Route::get('/data_civil', 'create')->name('ajouter_civil');
+        Route::get('/voir_cas_civil', 'viewCasCivil')->name('viewCasCivil');
+        Route::get('/edit/{id}', 'edit');
+        Route::put('/mod/{id}', 'modifier');
+        Route::get('/destroy/{id}', 'destroy');
+    });
+    Route::controller(CasDelisController::class)->group(function () {
+        Route::post('/data_delis/add', 'ajoute');
+        Route::get('/data_delis', 'create')->name('ajouter_delis');
+        Route::get('/voir_cas_delis', 'viewCasDelis')->name('viewCasDelis');
+        Route::get('/edit/{id}', 'edit');
+        Route::put('/mod/{id}', 'modifier');
+        Route::get('/destroy/{id}', 'destroy');
+    });
 });
 
 Auth::routes();
