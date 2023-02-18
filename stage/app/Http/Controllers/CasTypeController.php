@@ -6,6 +6,7 @@ use App\Models\cas_type;
 use App\Http\Requests\Storecas_typeRequest;
 use App\Http\Requests\Updatecas_typeRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CasTypeController extends Controller
@@ -17,6 +18,7 @@ class CasTypeController extends Controller
             [
                 'code_type' => $request->code_type,
                 'nom_type' => $request->nom_type,
+                'data_user_enter' => Auth::user()->userName,
             ]
         );
         return redirect()->Route('ajouter_cas');
@@ -41,6 +43,7 @@ class CasTypeController extends Controller
         DB::table('cas_types')->where('id', $id)->update([
             'code_type' => $request->code_type,
             'nom_type' => $request->nom_type,
+            'data_user_enter' => Auth::user()->userName,
         ]);
         return redirect()->Route('viewCas');
     }

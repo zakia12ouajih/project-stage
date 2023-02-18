@@ -6,6 +6,7 @@ use App\Models\cas_delis;
 use App\Http\Requests\Storecas_delisRequest;
 use App\Http\Requests\Updatecas_delisRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CasDelisController extends Controller
@@ -22,6 +23,7 @@ class CasDelisController extends Controller
                 'reste_sans_jugement' => $request->reste_sans_jugement,
                 'date' => $request->date,
                 'id_type' => $request->type,
+                'data_user_enter' => Auth::user()->userName,
             ]
         );
         return redirect()->route('ajouter_delis');
@@ -65,6 +67,7 @@ class CasDelisController extends Controller
             'reste_sans_jugement' => $request->reste_sans_jugement,
             'date' => $request->date,
             'id_type' => $request->type,
+            'data_user_enter' => Auth::user()->userName,
         ]);
         return redirect()->route('viewCasDelis');
     }

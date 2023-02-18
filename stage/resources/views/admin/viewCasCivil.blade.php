@@ -14,6 +14,7 @@
                <th class="text-center" scope="col">{{ __('msg.comdamne') }}</th>
                <th class="text-center" scope="col">{{ __('msg.reste_sans_jugement') }}</th>
                <th class="text-center" scope="col">{{ __('msg.date') }}</th>
+               <th class="text-center" scope="col">{{ __('msg.userName') }}</th>
                <th class="text-center" scope="col">{{ __('msg.modifier') }}</th>
                <th class="text-center" scope="col">{{ __('msg.supprimer') }}</th>
          </tr>
@@ -32,6 +33,7 @@
                   <td>{{ $d->comdamne }}</td>
                   <td>{{ $d->reste_sans_jugement }}</td>
                   <td>{{ $d->date }}</td>
+                  <td>{{ $d->data_user_enter }}</td>
                   
 
                   <td><a href="{{ URL('/admin/edit',$d->id) }}"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>

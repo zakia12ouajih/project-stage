@@ -6,6 +6,7 @@ use App\Models\cas_civil;
 use App\Http\Requests\Storecas_civilRequest;
 use App\Http\Requests\Updatecas_civilRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class CasCivilController extends Controller
@@ -23,6 +24,7 @@ class CasCivilController extends Controller
                 'reste_sans_jugement' => $request->reste_sans_jugement,
                 'date' => $request->date,
                 'id_type' => $request->type,
+                'data_user_enter' => Auth::user()->userName,
             ]
         );
         return redirect()->route('ajouter_civil');
@@ -47,6 +49,7 @@ class CasCivilController extends Controller
             'reste_sans_jugement' => $request->reste_sans_jugement,
             'date' => $request->date,
             'id_type' => $request->type,
+            'data_user_enter' => Auth::user()->userName,
         ]);
         return redirect()->route('viewCasCivil');
     }
