@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CasTypeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::prefix('user')->middleware('auth')->group(function(){
+    Route:: controller(CasTypeController::class)->group(function(){
+        Route::post('/form/add','ajoute');
+        Route::get('/form','create')->name('ajouter');
+
+    });
 });
 
 Auth::routes();

@@ -5,9 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\cas_type;
 use App\Http\Requests\Storecas_typeRequest;
 use App\Http\Requests\Updatecas_typeRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CasTypeController extends Controller
 {
+
+    public function ajoute(Request $request){
+        DB::table('stage')->insert(
+            [
+                "code_type"=>$request->code_type,
+                "nom_type"=>$request->nom_type,
+            ]
+            );
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +38,13 @@ class CasTypeController extends Controller
      */
     public function create()
     {
-        //
+        $role=Auth::user()->role;
+        if($role==1){
+          return view('admin.formCas');  
+        } else{
+            return view ('user.formulecas');
+        }
+        
     }
 
     /**
