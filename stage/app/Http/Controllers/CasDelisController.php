@@ -5,9 +5,35 @@ namespace App\Http\Controllers;
 use App\Models\cas_delis;
 use App\Http\Requests\Storecas_delisRequest;
 use App\Http\Requests\Updatecas_delisRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CasDelisController extends Controller
 {
+
+    public function ajoute(Request $request)
+    {
+        DB::table('cas_delis')->insert(
+            [
+                'reste_derniere_session' => $request->reste_derniere_session,
+                'inscrit' => $request->inscrit,
+                'somme' => $request->reste_derniere_session + $request->inscrit,
+                'comdamne' => $request->comdamne,
+                'reste_sans_jugement' => $request->reste_sans_jugement,
+                'date' => $request->date,
+                'id_type' => $request->type,
+                'data_user_enter' => Auth::user()->userName,
+            ]
+        );
+        return redirect()->route('ajouter_delis');
+    }
+
+    public function viewCasDelis()
+    {
+        $data = cas_delis::with('cas_type')->paginate(5);
+        return view('admin.viewCasDelis', compact('data'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,7 +51,25 @@ class CasDelisController extends Controller
      */
     public function create()
     {
-        //
+        $data = DB::table('cas_types')->get();
+        return view('admin.formDonneeDelis', compact('data'));
+    }
+
+    public function modifier(Request $request, $id)
+    {
+
+
+        DB::table('cas_delis')->where('id', $id)->update([
+            'reste_derniere_session' => $request->reste_derniere_session,
+            'inscrit' => $request->inscrit,
+            'somme' => $request->reste_derniere_session + $request->inscrit,
+            'comdamne' => $request->comdamne,
+            'reste_sans_jugement' => $request->reste_sans_jugement,
+            'date' => $request->date,
+            'id_type' => $request->type,
+            'data_user_enter' => Auth::user()->userName,
+        ]);
+        return redirect()->route('viewCasDelis');
     }
 
     /**
@@ -56,9 +100,11 @@ class CasDelisController extends Controller
      * @param  \App\Models\cas_delis  $cas_delis
      * @return \Illuminate\Http\Response
      */
-    public function edit(cas_delis $cas_delis)
+    public function edit($id)
     {
-        //
+        $modi = DB::table('cas_delis')->where('id', $id)->first();
+        $data = DB::table('cas_types')->get();
+        return view('admin.editCasCivil', compact('modi', 'data'));
     }
 
     /**
@@ -79,8 +125,9 @@ class CasDelisController extends Controller
      * @param  \App\Models\cas_delis  $cas_delis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(cas_delis $cas_delis)
+    public function destroy($id)
     {
-        //
+        DB::table('cas_delis')->where('id', $id)->delete();
+        return redirect()->route('viewCasDelis');
     }
 }

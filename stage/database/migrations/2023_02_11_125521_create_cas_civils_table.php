@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('comdamne')->nullable();
             $table->integer('reste_sans_jugement')->nullable();
             $table->date('date')->nullable();
+            $table->string('data_user_enter')->nullable();
 
             $table->unsignedBigInteger('id_type');
             $table->foreign('id_type')->references('id')->on('cas_types');
