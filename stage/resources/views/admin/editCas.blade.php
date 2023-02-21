@@ -21,6 +21,15 @@
                         <input id="nom_type" type="text" class="form-control " value="{{ $modi->nom_type }}" name="nom_type"  />
                      </div>
                   </div>
+                  <div class="row mb-3">
+                     <label for="genre" class="col-md-4 col-form-label text-md-end">{{ __('msg.genre') }}</label>
+                     <div class="col-md-6">
+                        <select class="form-select form-select-lg" name="genre" id="genre">
+                           <option value="civil">{{ __('msg.civil') }}</option>
+                           <option value="delis">{{ __('msg.delis') }}</option>
+                        </select>
+                     </div>
+                  </div>
                   <div class="row mb-0">
                      <div class="col-md-8 offset-md-4">
                         <input type="submit" value={{ __('msg.modifier') }}>

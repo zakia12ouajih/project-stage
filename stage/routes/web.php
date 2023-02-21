@@ -33,22 +33,22 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::put('/mod/{id}', 'modifier');
         Route::get('/destroy/{id}', 'destroy');
     });
-    Route::controller(CasCivilController::class)->group(function () {
-        Route::post('/data_civil/add', 'ajoute');
-        Route::get('/data_civil', 'create')->name('ajouter_civil');
-        Route::get('/voir_cas_civil', 'viewCasCivil')->name('viewCasCivil');
-        Route::get('/edit/{id}', 'edit');
-        Route::put('/mod/{id}', 'modifier');
-        Route::get('/destroy/{id}', 'destroy');
-    });
-    Route::controller(CasDelisController::class)->group(function () {
-        Route::post('/data_delis/add', 'ajoute');
-        Route::get('/data_delis', 'create')->name('ajouter_delis_user');
-        Route::get('/voir_cas_delis', 'viewCasDelis')->name('viewCasDelisUser');
-        Route::get('/edit/{id}', 'edit');
-        Route::put('/mod/{id}', 'modifier');
-        Route::get('/destroy/{id}', 'destroy');
-    });
+    // Route::controller(CasCivilController::class)->group(function () {
+    //     Route::post('/data_civil/add', 'ajoute');
+    //     Route::get('/data_civil', 'create')->name('ajouter_civil');
+    //     Route::get('/voir_cas_civil', 'viewCasCivil')->name('viewCasCivil');
+    //     Route::get('/edit/{id}', 'edit');
+    //     Route::put('/mod/{id}', 'modifier');
+    //     Route::get('/destroy/{id}', 'destroy');
+    // });
+    // Route::controller(CasDelisController::class)->group(function () {
+    //     Route::post('/data_delis/add', 'ajoute');
+    //     Route::get('/data_delis', 'create')->name('ajouter_delis_user');
+    //     Route::get('/voir_cas_delis', 'viewCasDelis')->name('viewCasDelisUser');
+    //     Route::get('/edit/{id}', 'edit');
+    //     Route::put('/mod/{id}', 'modifier');
+    //     Route::get('/destroy/{id}', 'destroy');
+    // });
 });
 
 

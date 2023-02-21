@@ -14,15 +14,26 @@
                         <input id="code_type" type="text" class="form-control " name="code_type"  />
                      </div>
                   </div>
-                  <div class="row mb-5">
+                  <div class="row mb-3">
                      <label for="nom_type" class="col-md-4 col-form-label text-md-end">{{ __('msg.nom_type') }}</label>
                      <div class="col-md-6">
                         <input id="nom_type" type="text" class="form-control " name="nom_type"  />
                      </div>
                   </div>
+                  <div class="row mb-5">
+                     <label for="genre" class="col-md-4 col-form-label text-md-end">{{ __('msg.genre') }}</label>
+                     <div class="col-md-6">
+                        <div class="">
+                           <select class="form-select form-select-lg" name="genre" id="genre">
+                              <option value="civil">{{ __('msg.civil') }}</option>
+                              <option value="delis">{{ __('msg.delis') }}</option>
+                           </select>
+                        </div>
+                     </div>
+                  </div>
                   <div class="row mb-0 ">
                      <div class="col-md-8 offset-md-4">
-                        <input type="submit" value={{ __('msg.envoyer') }}>
+                        <input class="btn btn-primary" type="submit" value={{ __('msg.envoyer') }}>
                      </div>
                   </div>
                </form>

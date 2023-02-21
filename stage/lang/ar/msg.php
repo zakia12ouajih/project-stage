@@ -48,5 +48,8 @@ return[
    'dateto'=>'إلى',
    'enter_date'=>'ادخل التاريخ',
    'statistique'=>'الاحصائيات',
+   'genre' =>'نوع القضية',
+   'civil'=>'مدنية',
+   'delis'=>'جنحية',
 ]
 ?>

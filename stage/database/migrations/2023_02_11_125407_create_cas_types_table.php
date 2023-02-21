@@ -17,7 +17,7 @@ return new class extends Migration
                 $table->id()->nullable();
                 $table->string('code_type')->nullable();
                 $table->string('nom_type')->nullable();
-                $table->string('data_user_enter')->nullable();
+                $table->string('genre')->nullable();
             });
     }
 
