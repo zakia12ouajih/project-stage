@@ -14,7 +14,7 @@
                         <th class="text-center" scope="col">{{ __('msg.comdamne') }}</th>
                         <th class="text-center" scope="col">{{ __('msg.reste_sans_jugement') }}</th>
                         <th class="text-center" scope="col">{{ __('msg.date') }}</th>
-                        <th class="text-center" scope="col">{{ __('msg.userName') }}</th>
+                        
                     </tr>
                 </thead>
                 {{-- {{ $data }} --}}
@@ -28,13 +28,37 @@
                             <td>{{ $d->comdamne }}</td>
                             <td>{{ $d->reste_sans_jugement }}</td>
                             <td>{{ $d->date }}</td>
-                            <td>{{ $d->data_user_enter }}</td>
+                            
                 
                         </tr>
                     @endforeach
                 </tbody>
             </table>
             <div class="d-flex justify-content-center align-items-center">{{ $data->links() }}</div>
+            <table class="table table-hover table-bordered">
+                <thead >
+                    <tr class="table-primary">
+                        <th class="text-center" scope="col">{{ __('msg.reste_derniere_session') }}</th>
+                        <th class="text-center" scope="col">{{ __('msg.inscrit') }}</th>
+                        <th class="text-center" scope="col">{{ __('msg.somme') }}</th>
+                        <th class="text-center" scope="col">{{ __('msg.comdamne') }}</th>
+                        <th class="text-center" scope="col">{{ __('msg.reste_sans_jugement') }}</th>
+                        
+                    </tr>
+                </thead>
+                {{-- {{ $sommerest }} --}}
+                <tbody class="text-center">
+                        <tr>
+                             
+                            <td>{{$sommerest }}</td>
+                            <td>{{ $sommeinscrit }}</td>
+                            <td>{{ $sommeSum  }}</td>
+                            <td>{{ $sommecomdamne }}</td>
+                            <td>{{ $sommeRSJ }}</td>
+                            
+                        </tr>
+                </tbody>
+            </table>
         </div>
    </div>
 @endsection

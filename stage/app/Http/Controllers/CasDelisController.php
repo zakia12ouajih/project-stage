@@ -48,7 +48,34 @@ class CasDelisController extends Controller
     }
     public function StatisticD(Request $request){
         $data = cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate(5);
-        return view('user.staticCasDelisUser', compact('data'));
+        $sommeTable=cas_delis::count();
+        $sommerest=0;
+        $sommeinscrit=0;
+        $sommeSum=0;
+        $sommecondamne=0;
+        $sommeRSJ=0;
+        for ($i=0; $i <=$sommeTable ; $i++) { 
+            
+            $sommerest= cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('reste_derniere_session');
+        }
+        for ($i=0; $i <=$sommeTable ; $i++) { 
+            
+            $sommeinscrit= cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('inscrit');
+        }
+        for ($i=0; $i <=$sommeTable ; $i++) { 
+            
+            $sommeSum= cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('somme');
+        }
+        for ($i=0; $i <=$sommeTable ; $i++) { 
+            
+            $sommecomdamne= cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('comdamne');
+        }
+        for ($i=0; $i <=$sommeTable ; $i++) { 
+            
+            $sommeRSJ= cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('reste_sans_jugement');
+        }
+        // return $data;
+        return view('user.staticCasDelisUser', compact('data','sommerest','sommeinscrit','sommeSum','sommecomdamne','sommeRSJ'));
             
     }
     
