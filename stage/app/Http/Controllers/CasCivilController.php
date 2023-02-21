@@ -27,14 +27,27 @@ class CasCivilController extends Controller
                 'data_user_enter' => Auth::user()->userName,
             ]
         );
-        return redirect()->route('ajouter_civil');
+        
+        $role = Auth::user()->role;
+        if($role==1){
+            return redirect()->route('ajouter_civil');
+        }
+        else{
+            return redirect()->route('ajouter_civil_user');
+        }    
     }
 
 
     public function viewCasCivil()
     {
         $data = cas_civil::with('cas_type')->paginate(5);
-        return view('admin.viewCasCivil', compact('data'));
+        $role = Auth::user()->role;
+        if($role==1){
+            return view('admin.viewCasCivil', compact('data'));
+        }
+        else{
+            return view('user.viewCasCivil', compact('data'));
+        }    
     }
 
     public function modifier(Request $request, $id)
@@ -51,7 +64,23 @@ class CasCivilController extends Controller
             'id_type' => $request->type,
             'data_user_enter' => Auth::user()->userName,
         ]);
-        return redirect()->route('viewCasCivil');
+        $role = Auth::user()->role;
+        if($role==1){
+            return redirect()->route('viewCasCivil');
+        }
+        else{
+            return redirect()->route('viewCasCivil_user');
+        }  
+    }
+
+    public function staticCasCivilUser(){
+        return view('user.staticCasCivilUserSearch');
+    }
+    public function StatisticC(Request $request){
+        $data = cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate(5);
+        // return $data;
+        return view('user.staticCasCivilUser', compact('data'));
+        
     }
     /**
      * Display a listing of the resource.
@@ -71,7 +100,14 @@ class CasCivilController extends Controller
     public function create()
     {
         $data = DB::table('cas_types')->get();
-        return view('admin.formDonneeCivil', compact('data'));
+        $role = Auth::user()->role;
+        if($role==1){
+            return view('admin.formDonneeCivil', compact('data'));
+        }
+        else{
+            return view('user.UsformDonneeC', compact('data'));
+        }
+        
     }
 
     /**

@@ -26,14 +26,32 @@ class CasDelisController extends Controller
                 'data_user_enter' => Auth::user()->userName,
             ]
         );
-        return redirect()->route('ajouter_delis');
+        $role = Auth::user()->role;
+        if($role==1){
+            return redirect()->route('ajouter_delis');
+        }
+        else{
+            return redirect()->route('ajouter_delis_user');
+        }  
     }
 
     public function viewCasDelis()
     {
         $data = cas_delis::with('cas_type')->paginate(5);
-        return view('admin.viewCasDelis', compact('data'));
+        $role = Auth::user()->role;
+        if($role==1){
+            return view('admin.viewCasDelis', compact('data'));
+        }
+        else{
+            return view('user.UsviewCasD', compact('data'));
+        }
     }
+    public function StatisticD(Request $request){
+        $data = cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate(5);
+        return view('user.staticCasDelisUser', compact('data'));
+            
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -52,7 +70,13 @@ class CasDelisController extends Controller
     public function create()
     {
         $data = DB::table('cas_types')->get();
-        return view('admin.formDonneeDelis', compact('data'));
+        $role = Auth::user()->role;
+        if($role==1){
+            return view('admin.formDonneeDelis', compact('data'));
+        }
+        else{
+            return view('user.UsformDonneeD', compact('data'));
+        }
     }
 
     public function modifier(Request $request, $id)
@@ -69,7 +93,16 @@ class CasDelisController extends Controller
             'id_type' => $request->type,
             'data_user_enter' => Auth::user()->userName,
         ]);
-        return redirect()->route('viewCasDelis');
+        $role = Auth::user()->role;
+        if($role==1){
+            return redirect()->route('viewCasDelis');
+        }
+        else{
+            return redirect()->route('viewCasDelisUser');
+        }  
+    }
+    public function staticCasDelisUser(){
+        return view('user.staticCasDelisUserSearch');
     }
 
     /**

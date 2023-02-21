@@ -21,13 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::prefix('user')->middleware('auth')->group(function(){
-    Route:: controller(CasTypeController::class)->group(function(){
-        Route::post('/form/add','ajoute');
-        Route::get('/form','create')->name('ajouter');
 
-    });
-});
 
 Route::prefix('admin')->middleware('auth')->group(function () {
 
@@ -49,11 +43,29 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     });
     Route::controller(CasDelisController::class)->group(function () {
         Route::post('/data_delis/add', 'ajoute');
-        Route::get('/data_delis', 'create')->name('ajouter_delis');
-        Route::get('/voir_cas_delis', 'viewCasDelis')->name('viewCasDelis');
+        Route::get('/data_delis', 'create')->name('ajouter_delis_user');
+        Route::get('/voir_cas_delis', 'viewCasDelis')->name('viewCasDelisUser');
         Route::get('/edit/{id}', 'edit');
         Route::put('/mod/{id}', 'modifier');
         Route::get('/destroy/{id}', 'destroy');
+    });
+});
+
+
+Route::prefix('user')->middleware('auth')->group(function(){
+    Route::controller(CasCivilController::class)->group(function () {
+        Route::post('/data_civil/add', 'ajoute');
+        Route::get('/data_civil', 'create')->name('ajouter_civil_user');
+        Route::get('/voir_cas_civil', 'viewCasCivil')->name('viewCasCivil_user');
+        Route::get('/staticCasCivil','staticCasCivilUser');
+        Route::post('/staticCasCivil/search','StatisticC');
+    });
+    Route::controller(CasDelisController::class)->group(function () {
+        Route::post('/data_delis/add', 'ajoute');
+        Route::get('/data_delis', 'create')->name('ajouter_delis');
+        Route::get('/voir_cas_delis', 'viewCasDelis')->name('viewCasDelis');
+        Route::get('/staticCasDelis','staticCasDelisUser');
+        Route::post('/staticCasDelis/search','StatisticD');
     });
 });
 

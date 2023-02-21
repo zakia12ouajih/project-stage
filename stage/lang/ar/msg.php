@@ -42,5 +42,11 @@ return[
    'supprimer'=>'حذف',
    'somme' =>'المجموع',
    'choose'=>'--- اختر القضية ---',
+   'statistic_cas_civil'=>'احصائيات القضاياالمدنية',
+   'statistic_cas_delis'=>'احصائيات القضايا الجنحية',
+   'datefrom'=>'من',
+   'dateto'=>'إلى',
+   'enter_date'=>'ادخل التاريخ',
+   'statistique'=>'الاحصائيات',
 ]
 ?>

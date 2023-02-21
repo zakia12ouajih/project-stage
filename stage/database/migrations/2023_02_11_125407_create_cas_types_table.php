@@ -15,7 +15,7 @@ return new class extends Migration
     {
             Schema::create('cas_types', function (Blueprint $table) {
                 $table->id()->nullable();
-                $table->integer('code_type')->nullable();
+                $table->string('code_type')->nullable();
                 $table->string('nom_type')->nullable();
                 $table->string('data_user_enter')->nullable();
             });

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class cas_delis extends Model
 {
     use HasFactory;
+    public $table = 'cas_delis';
 
     protected $fillable = [
         'type',
