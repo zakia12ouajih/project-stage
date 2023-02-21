@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 class CasDelisController extends Controller
 {
 
-    public function ajoute(Request $request)
+    public function ajouteDelis(Request $request)
     {
         DB::table('cas_delis')->insert(
             [
@@ -28,10 +28,10 @@ class CasDelisController extends Controller
         );
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->route('ajouter_delis');
+            return redirect()->route('ajouter_delis')->with('success', '');
         }
         else{
-            return redirect()->route('ajouter_delis_user');
+            return redirect()->route('ajouter_delis_user')->with('success', '');
         }  
     }
 
@@ -94,9 +94,9 @@ class CasDelisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createDelis()
     {
-        $data = DB::table('cas_types')->get();
+        $data = DB::table('cas_types')->where('genre', '=', 'delis')->get();;
         $role = Auth::user()->role;
         if($role==1){
             return view('admin.formDonneeDelis', compact('data'));
@@ -106,7 +106,7 @@ class CasDelisController extends Controller
         }
     }
 
-    public function modifier(Request $request, $id)
+    public function modifierDelis(Request $request, $id)
     {
 
 
@@ -122,10 +122,10 @@ class CasDelisController extends Controller
         ]);
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->route('viewCasDelis');
+            return redirect()->route('viewCasDelis')->with('success', '');
         }
         else{
-            return redirect()->route('viewCasDelisUser');
+            return redirect()->route('viewCasDelisUser')->with('success', '');
         }  
     }
     public function staticCasDelisUser(){
@@ -160,11 +160,11 @@ class CasDelisController extends Controller
      * @param  \App\Models\cas_delis  $cas_delis
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editDelis($id)
     {
         $modi = DB::table('cas_delis')->where('id', $id)->first();
-        $data = DB::table('cas_types')->get();
-        return view('admin.editCasCivil', compact('modi', 'data'));
+        $data = DB::table('cas_types')->where('genre', '=', 'delis')->get();
+        return view('admin.editCasDelis', compact('modi', 'data'));
     }
 
     /**
@@ -185,7 +185,7 @@ class CasDelisController extends Controller
      * @param  \App\Models\cas_delis  $cas_delis
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyDelis($id)
     {
         DB::table('cas_delis')->where('id', $id)->delete();
         return redirect()->route('viewCasDelis');

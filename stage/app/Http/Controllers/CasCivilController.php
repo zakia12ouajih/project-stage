@@ -13,7 +13,7 @@ class CasCivilController extends Controller
 {
 
 
-    public function ajoute(Request $request)
+    public function ajouteCivil(Request $request)
     {
         DB::table('cas_civils')->insert(
             [
@@ -30,10 +30,10 @@ class CasCivilController extends Controller
         
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->route('ajouter_civil');
+            return redirect()->route('ajouter_civil')->with('success', '');
         }
         else{
-            return redirect()->route('ajouter_civil_user');
+            return redirect()->route('ajouter_civil_user')->with('success', '');
         }    
     }
 
@@ -50,7 +50,7 @@ class CasCivilController extends Controller
         }    
     }
 
-    public function modifier(Request $request, $id)
+    public function modifierCivil(Request $request, $id)
     {
 
 
@@ -66,10 +66,10 @@ class CasCivilController extends Controller
         ]);
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->route('viewCasCivil');
+            return redirect()->route('viewCasCivil')->with('success', '');
         }
         else{
-            return redirect()->route('viewCasCivil_user');
+            return redirect()->route('viewCasCivil_user')->with('success', '');
         }  
     }
 
@@ -123,9 +123,9 @@ class CasCivilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createCivil()
     {
-        $data = DB::table('cas_types')->get();
+        $data = DB::table('cas_types')->where('genre', '=', 'civil')->get();
         $role = Auth::user()->role;
         if($role==1){
             return view('admin.formDonneeCivil', compact('data'));
@@ -164,10 +164,10 @@ class CasCivilController extends Controller
      * @param  \App\Models\cas_civil  $cas_civil
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editCivil($id)
     {
         $modi = DB::table('cas_civils')->where('id', $id)->first();
-        $data = DB::table('cas_types')->get();
+        $data = DB::table('cas_types')->where('genre', '=', 'civil')->get();
         return view('admin.editCasCivil', compact('modi', 'data'));
     }
 
@@ -189,9 +189,9 @@ class CasCivilController extends Controller
      * @param  \App\Models\cas_civil  $cas_civil
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyCivil($id)
     {
         DB::table('cas_civils')->where('id', $id)->delete();
-        return redirect()->route('viewCasCivil');
+        return redirect()->route('viewCasCivil')->with('success', '');
     }
 }

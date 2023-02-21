@@ -3,9 +3,16 @@
 @section('content')
    <div class="container">
       <div class="row justify-content-center">
+         @if (Session::has('success'))
+            <div class="alert alert-success alert-dismissible position-absolute"   role="alert">
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+               <strong>{{ __('msg.success') }}</strong> Alert Content
+            </div>
+            
+         @endif
          <div class="col-md-8">
             <div class="card py-4">
-               <form action="{{ URL('/admin/mod', $modi->id) }}" method="POST">
+               <form action="{{ URL('/admin/modCivil', $modi->id) }}" method="POST">
                   @csrf
                   @method('put')
                   <div class="row mb-3">

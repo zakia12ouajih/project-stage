@@ -33,8 +33,8 @@
                   
                   
 
-                  <td><a href="{{ URL('/admin/edit',$d->id) }}"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
-                  <td><a href="{{ URL('/admin/destroy',$d->id) }}"><button class='btn btn-danger'>{{ __('msg.supprimer') }}</button></a></td>
+                  <td><a href="{{ URL('/admin/editDelis',$d->id) }}"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
+                  <td><a href="{{ URL('/admin/destroyDelis',$d->id) }}"><button class='btn btn-danger'>{{ __('msg.supprimer') }}</button></a></td>
                </tr>
             @endforeach
          </tbody>

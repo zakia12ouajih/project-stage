@@ -36,8 +36,8 @@
                   <td>{{ $d->data_user_enter }}</td>
                   
 
-                  <td><a href="{{ URL('/admin/edit',$d->id) }}"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
-                  <td><a href="{{ URL('/admin/destroy',$d->id) }}"><button class='btn btn-danger'>{{ __('msg.supprimer') }}</button></a></td>
+                  <td><a href="{{ URL('/admin/editCivil',$d->id) }}"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
+                  <td><a href="{{ URL('/admin/destroyCivil',$d->id) }}"><button class='btn btn-danger'>{{ __('msg.supprimer') }}</button></a></td>
                </tr>
             @endforeach
          </tbody>
