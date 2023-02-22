@@ -96,7 +96,8 @@ class CasDelisController extends Controller
      */
     public function createDelis()
     {
-        $data = DB::table('cas_types')->where('genre', '=', 'delis')->get();;
+        
+        $data = DB::table('cas_types')->where('genre', '=','delis')->get();;
         $role = Auth::user()->role;
         if($role==1){
             return view('admin.formDonneeDelis', compact('data'));
