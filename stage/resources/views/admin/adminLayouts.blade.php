@@ -37,3 +37,12 @@
          <a class="dropdown-item text-center" href='/admin/voir_cas_delis'>{{ __('msg.voir_cas_delis') }}</a>
       </div> 
 @endsection 
+
+
+@section('statistique')
+   <a href="#" class="collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right " data-bs-toggle="collapse" data-bs-target="#demo5">{{ __('msg.statistique') }}</a>
+   <div id="demo5" class="collapse py-1">
+      <a class="dropdown-item text-center" href='/admin/staticCasDelisAdmin'>{{ __('msg.statistic_cas_delis') }}</a>
+      <a class="dropdown-item text-center" href="/admin/staticCasCivilAdmin">{{ __('msg.statistic_cas_civil') }}</a>
+   </div> 
+@endsection

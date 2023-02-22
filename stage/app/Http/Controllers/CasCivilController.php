@@ -73,8 +73,13 @@ class CasCivilController extends Controller
         }  
     }
 
-    public function staticCasCivilUser(){
-        return view('user.staticCasCivilUserSearch');
+    public function staticCasCivil(){
+        $role = Auth::user()->role;
+        if ($role == 1) {
+            return view('admin.staticCasCivilAdminSearch');
+        } else {
+            return view('user.staticCasCivilUserSearch');
+        }  
     }
     public function StatisticC(Request $request){
         $data = cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate(5);
@@ -105,7 +110,12 @@ class CasCivilController extends Controller
             $sommeRSJ= cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('reste_sans_jugement');
         }
         // return $data;
-        return view('user.staticCasCivilUser', compact('data','sommerest','sommeinscrit','sommeSum','sommecomdamne','sommeRSJ'));
+        $role = Auth::user()->role;
+        if ($role == 1) {
+            return view('admin.staticCasCivilAdmin', compact('data','sommerest','sommeinscrit','sommeSum','sommecomdamne','sommeRSJ'));
+        } else {
+            return view('user.staticCasCivilUser', compact('data','sommerest','sommeinscrit','sommeSum','sommecomdamne','sommeRSJ'));
+        }  
         
     }
     /**
