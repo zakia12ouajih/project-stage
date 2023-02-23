@@ -39,3 +39,10 @@
         </div>
     </div>
 @endsection
+@section('navbar2')
+    <a  href="" class="navbar-brand ">
+        {{ __('msg.HomePage') }}
+    </a>
+    <a class="px-1">hi</a>
+
+@endsection

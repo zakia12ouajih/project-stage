@@ -3,3 +3,34 @@
    width: 45px;
    height: 45px;
 }
+
+
+
+
+/* .color-box {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+} */
+
+.box {
+   align-items: center;
+   border-radius: 10px;
+   margin: 10px 5px;
+}
+.box p {
+   line-height: 30px;
+}
+
+.skyblue {
+   background-color: rgb(135, 220, 253);
+}
+
+.yellow {
+   background-color: rgb(231, 251, 151);
+}
+
+.purple {
+   background-color: rgb(243, 178, 255);
+}

@@ -59,8 +59,9 @@ Route::prefix('user')->middleware('auth')->group(function(){
         Route::post('/data_civil/add', 'ajouteCivil');
         Route::get('/data_civil_user', 'createCivil')->name('ajouter_civil_user');
         Route::get('/voir_cas_civil_user', 'viewCasCivil')->name('viewCasCivil_user');
-        Route::get('/staticCasCivilUser','staticCasCivilUser');
+        Route::get('/staticCasCivilUser','staticCasCivil');
         Route::post('/staticCasCivil/search','StatisticC');
+        Route::get('/CasCivil/search','CasCivilS');
     });
     Route::controller(CasDelisController::class)->group(function () {
         Route::post('/data_delis/add', 'ajouteDelis');

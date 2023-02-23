@@ -5,7 +5,7 @@
       <div class="row justify-content-center">
          <div class="col-md-8">
             <div class="card py-4">
-               <form action="/admin/data_delis/add" method="POST">
+               <form action="/user/data_delis/add" method="POST">
                   @csrf
                   <div class="row mb-3">
                      <label for="" class="col-md-4 col-form-label text-md-end">{{ __('msg.cas1') }}</label>
@@ -61,4 +61,11 @@
          </div>
       </div>
    </div>
+@endsection
+@section('navbar2')
+    <a  href="" class="navbar-brand text-light fw-bolder">
+        {{ __('msg.Entrer_le resultat_du mois') }}   / {{ __('msg.Delis') }} 
+    </a>
+    <a class="px-1">de</a>
+
 @endsection

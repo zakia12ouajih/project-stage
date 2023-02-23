@@ -59,6 +59,19 @@
                         </tr>
                 </tbody>
             </table>
+            <button onclick="myfun()">print page</button>
+            <script type="text/javascript">
+                function myfun(){
+                    window.print();
+                }
+            </script>
         </div>
    </div>
+@endsection
+@section('navbar2')
+<a  href="" class="navbar-brand text-light fw-bolder">
+    {{ __('msg.statistique') }}  /  {{ __('msg.statistic_cas_delis') }}
+</a>
+    <a class="px-1">hi</a>
+
 @endsection

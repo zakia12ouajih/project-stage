@@ -81,6 +81,11 @@ class CasCivilController extends Controller
             return view('user.staticCasCivilUserSearch');
         }  
     }
+    public function CasCivilS(Request $request){
+        // $data = cas_civil::with('cas_type')->where('date',[$request->input('dateS')]);
+        return view('user.viewCasCivilSearch');
+    }
+    
     public function StatisticC(Request $request){
         $data = cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate(5);
         $sommeTable=cas_civil::count();
