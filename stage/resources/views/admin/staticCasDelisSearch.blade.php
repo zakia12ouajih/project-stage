@@ -4,7 +4,7 @@
    <div class="row justify-content-center">
       <div class="col-md-8">
          <h4 class="display-4 text-end mb-3">{{ __('msg.enter_date') }}</h4>
-         <form action="/admin/staticCasCivilAdmin/search" method="POST">
+         <form action="/admin/staticCasDelisAdmin/search" method="POST">
             @csrf
             <div class="row mb-3 d-flex justify-content-center align-items-center">
                <div class="col-md-6 d-flex">

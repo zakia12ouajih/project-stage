@@ -32,8 +32,10 @@
                      <label for="genre" class="col-md-4 col-form-label text-md-end">{{ __('msg.genre') }}</label>
                      <div class="col-md-6">
                         <select class="form-select form-select-lg" name="genre" id="genre">
-                           <option value="civil">{{ __('msg.civil') }}</option>
-                           <option value="delis">{{ __('msg.delis') }}</option>
+                           
+                              <option value="civil">{{ __('msg.civil') }}</option>
+                              <option value="delis">{{ __('msg.delis') }}</option>
+                           
                         </select>
                      </div>
                   </div>

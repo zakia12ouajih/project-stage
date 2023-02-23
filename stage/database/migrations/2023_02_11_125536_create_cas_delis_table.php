@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('data_user_enter')->nullable();
             
             $table->unsignedBigInteger('id_type');
-            $table->foreign('id_type')->references('id')->on('cas_types');
+            $table->foreign('id_type')->references('id')->on('cas_types')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

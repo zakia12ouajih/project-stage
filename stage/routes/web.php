@@ -36,20 +36,25 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::controller(CasCivilController::class)->group(function () {
         Route::post('/data_civil/add', 'ajouteCivil');
         Route::get('/data_civil', 'createCivil')->name('ajouter_civil');
-        Route::get('/voir_cas_civil', 'viewCasCivil')->name('viewCasCivil');
+        Route::get('/voir_cas_civil', 'viewCasCivil');
+        Route::post('/voir_cas_civil/search', 'monthCasCivil');
         Route::get('/editCivil/{id}', 'editCivil');
         Route::put('/modCivil/{id}', 'modifierCivil');
         Route::get('/destroyCivil/{id}', 'destroyCivil');
         Route::get('/staticCasCivilAdmin', 'staticCasCivil');
-        Route::post('/staticCasCivil/search', 'StatisticC');
+        Route::post('/staticCasCivilAdmin/search', 'statisticC');
+        
     });
     Route::controller(CasDelisController::class)->group(function () {
         Route::post('/data_delis/add', 'ajouteDelis');
         Route::get('/data_delis', 'createDelis')->name('ajouter_delis');
-        Route::get('/voir_cas_delis', 'viewCasDelis')->name('viewCasDelis');
+        Route::get('/voir_cas_delis', 'viewCasDelis');
+        Route::post('/voir_cas_delis/search', 'getData')->name('viewCasDelis');
         Route::get('/editDelis/{id}', 'editDelis');
         Route::put('/modDelis/{id}', 'modifierDelis');
         Route::get('/destroyDelis/{id}', 'destroyDelis');
+        Route::get('/staticCasDelisAdmin', 'staticCasDelis');
+        Route::post('/staticCasDelisAdmin/search', 'statisticD');
     });
 });
 
@@ -59,14 +64,14 @@ Route::prefix('user')->middleware('auth')->group(function(){
         Route::post('/data_civil/add', 'ajouteCivil');
         Route::get('/data_civil_user', 'createCivil')->name('ajouter_civil_user');
         Route::get('/voir_cas_civil_user', 'viewCasCivil')->name('viewCasCivil_user');
-        Route::get('/staticCasCivilUser','staticCasCivilUser');
+        Route::get('/staticCasCivilUser','staticCasCivil');
         Route::post('/staticCasCivil/search','StatisticC');
     });
     Route::controller(CasDelisController::class)->group(function () {
         Route::post('/data_delis/add', 'ajouteDelis');
         Route::get('/data_delis_user', 'createDelis')->name('ajouter_delis_user');
         Route::get('/voir_cas_delis_user', 'viewCasDelis')->name('viewCasDelis_user');
-        Route::get('/staticCasDelisUser','staticCasDelisUser');
+        Route::get('/staticCasDelisUser','staticCasDelis');
         Route::post('/staticCasDelis/search','StatisticD');
     });
 });

@@ -34,19 +34,24 @@ class CasDelisController extends Controller
             return redirect()->route('ajouter_delis_user')->with('success', '');
         }  
     }
+    public function getData(Request $request)
+    {
+        $data = cas_delis::get()->where('date', '=', $request->input('search'));
+        return view('admin.viewCasDelis', compact('data'));
+    }
 
     public function viewCasDelis()
     {
-        $data = cas_delis::with('cas_type')->paginate(5);
+        $data = cas_delis::with('cas_type')->paginate($perPage = 5, $columns =['*'], $pageName ='cas_delis');
         $role = Auth::user()->role;
         if($role==1){
-            return view('admin.viewCasDelis', compact('data'));
+            return view('admin.monthCasDelisSearch', compact('data'));
         }
         else{
             return view('user.UsviewCasD', compact('data'));
         }
     }
-    public function StatisticD(Request $request){
+    public function statisticD(Request $request){
         $data = cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate(5);
         $sommeTable=cas_delis::count();
         $sommerest=0;
@@ -75,7 +80,13 @@ class CasDelisController extends Controller
             $sommeRSJ= cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('reste_sans_jugement');
         }
         // return $data;
-        return view('user.staticCasDelisUser', compact('data','sommerest','sommeinscrit','sommeSum','sommecomdamne','sommeRSJ'));
+        $role = Auth::user()->role;
+        if ($role == 1) {
+            return view('admin.staticCasDelisAdmin', compact('data', 'sommerest', 'sommeinscrit', 'sommeSum', 'sommecomdamne', 'sommeRSJ'));
+        } else {
+            return view('user.staticCasDelisUser', compact('data', 'sommerest', 'sommeinscrit', 'sommeSum', 'sommecomdamne', 'sommeRSJ'));
+        }  
+        
             
     }
     
@@ -123,14 +134,20 @@ class CasDelisController extends Controller
         ]);
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->route('viewCasDelis')->with('success', '');
+            return redirect()->route('');
         }
         else{
             return redirect()->route('viewCasDelisUser')->with('success', '');
         }  
     }
-    public function staticCasDelisUser(){
-        return view('user.staticCasDelisUserSearch');
+    public function staticCasDelis(){
+        $role = Auth::user()->role;
+        if ($role == 1) {
+            return view('admin.staticCasDelisSearch');
+        } else {
+
+            return view('user.staticCasDelisUserSearch');
+        }  
     }
 
     /**

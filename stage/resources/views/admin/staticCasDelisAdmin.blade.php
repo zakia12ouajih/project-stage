@@ -3,7 +3,7 @@
 @section('content')
    <div class="row justify-content-center">
       <div class="col-md-8">
-         <h4 class="display-4 text-end mb-3">{{ __('msg.statistic_cas_civil') }}</h4>
+         <h4 class="display-4 text-end mb-3">{{ __('msg.statistic_cas_delis') }}</h4>
             <table class="table table-hover table-bordered" name='cas_civil'>
                <thead >
                   <tr class="table-primary">
@@ -16,7 +16,6 @@
                      <th class="text-center" scope="col">{{ __('msg.date') }}</th>
                   </tr>
                </thead>
-               {{-- {{ $sommerest }} --}}
                <tbody class="text-center">
                   @foreach ($data as $d)
                      <tr>
@@ -32,28 +31,27 @@
                </tbody>
             </table>
             <table class="table table-hover table-bordered">
-               <thead >
-                  <tr class="table-primary">
-                     <th class="text-center" scope="col">{{ __('msg.reste_derniere_session') }}</th>
-                     <th class="text-center" scope="col">{{ __('msg.inscrit') }}</th>
-                     <th class="text-center" scope="col">{{ __('msg.somme') }}</th>
-                     <th class="text-center" scope="col">{{ __('msg.comdamne') }}</th>
-                     <th class="text-center" scope="col">{{ __('msg.reste_sans_jugement') }}</th>
-                  </tr>
-               </thead>
-               {{-- {{ $sommerest }} --}}
-               <tbody class="text-center">
-                  <tr>
-                     <td>{{$sommerest }}</td>
-                     <td>{{ $sommeinscrit }}</td>
-                     <td>{{ $sommeSum  }}</td>
-                     <td>{{ $sommecomdamne }}</td>
-                     <td>{{ $sommeRSJ }}</td>
-                  </tr>
-               </tbody>
-            </table>  
+            <thead >
+               <tr class="table-primary">
+                  <th class="text-center" scope="col">{{ __('msg.reste_derniere_session') }}</th>
+                  <th class="text-center" scope="col">{{ __('msg.inscrit') }}</th>
+                  <th class="text-center" scope="col">{{ __('msg.somme') }}</th>
+                  <th class="text-center" scope="col">{{ __('msg.comdamne') }}</th>
+                  <th class="text-center" scope="col">{{ __('msg.reste_sans_jugement') }}</th>
+               </tr>
+            </thead>
+            <tbody class="text-center">
+               <tr>
+                  <td>{{$sommerest }}</td>
+                  <td>{{ $sommeinscrit }}</td>
+                  <td>{{ $sommeSum  }}</td>
+                  <td>{{ $sommecomdamne }}</td>
+                  <td>{{ $sommeRSJ }}</td>
+               </tr>
+            </tbody>
+         </table>  
       </div>
    </div>
-   {{-- <h2>hello</h2> --}}
-   
+
+   </div> 
 @endsection

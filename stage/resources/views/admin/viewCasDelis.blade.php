@@ -39,9 +39,9 @@
             @endforeach
          </tbody>
       </table>
-      <div class="d-flex justify-content-center align-items-center">
+      {{-- <div class="d-flex justify-content-center align-items-center">
          {{ $data->links() }}
-      </div>
+      </div> --}}
    </div>
 </div>
 @endsection

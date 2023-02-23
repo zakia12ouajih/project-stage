@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cas_civil;
 use App\Http\Requests\Storecas_civilRequest;
 use App\Http\Requests\Updatecas_civilRequest;
+use App\Models\cas_delis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -40,20 +41,23 @@ class CasCivilController extends Controller
 
     public function viewCasCivil()
     {
-        $data = cas_civil::with('cas_type')->paginate(5);
         $role = Auth::user()->role;
         if($role==1){
-            return view('admin.viewCasCivil', compact('data'));
+            return view('admin.monthCasCivilSearch');
         }
         else{
-            return view('user.viewCasCivil', compact('data'));
+            return view('user.viewCasCivil');
         }    
+    }
+
+    public function monthCasCivil(Request $request){
+        $data = cas_delis::get()->where('date', '=', $request->input('search'));
+        return view('admin.monthCasCivilSearch',compact('data'));
+
     }
 
     public function modifierCivil(Request $request, $id)
     {
-
-
         DB::table('cas_civils')->where('id', $id)->update([
             'reste_derniere_session' => $request->reste_derniere_session,
             'inscrit' => $request->inscrit,
@@ -66,7 +70,7 @@ class CasCivilController extends Controller
         ]);
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->route('viewCasCivil')->with('success', '');
+            return redirect()->action([CasCivilController::class,'monthCasCivil']);
         }
         else{
             return redirect()->route('viewCasCivil_user')->with('success', '');
@@ -81,8 +85,8 @@ class CasCivilController extends Controller
             return view('user.staticCasCivilUserSearch');
         }  
     }
-    public function StatisticC(Request $request){
-        $data = cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate(5);
+    public function statisticC(Request $request){
+        $data = cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate();
         $sommeTable=cas_civil::count();
         $sommerest=0;
         $sommeinscrit=0;
