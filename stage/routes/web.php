@@ -66,6 +66,7 @@ Route::prefix('user')->middleware('auth')->group(function(){
         Route::get('/voir_cas_civil_user', 'viewCasCivil')->name('viewCasCivil_user');
         Route::get('/staticCasCivilUser','staticCasCivil');
         Route::post('/staticCasCivil/search','StatisticC');
+        Route::get('/CasCivil/search','CasCivilS');
     });
     Route::controller(CasDelisController::class)->group(function () {
         Route::post('/data_delis/add', 'ajouteDelis');

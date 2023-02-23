@@ -51,5 +51,9 @@ return[
    'genre' =>'نوع القضية',
    'civil'=>'مدنية',
    'delis'=>'جنحية',
+   'HomePage'=>'الصفحة الرئيسية',
+   'Entrer_le resultat_du mois'=>'ادخال حصيلة الشهر',
+   'Delis'=>'جنحي',
+   'Civil'=>'مدني',
 ]
 ?>

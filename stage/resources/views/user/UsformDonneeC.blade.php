@@ -62,3 +62,10 @@
       </div>
    </div>
 @endsection
+@section('navbar2')
+    <a  href="" class="navbar-brand text-light fw-bolder ">
+      {{ __('msg.Entrer_le resultat_du mois') }}   / {{ __('msg.Civil') }} 
+    </a>
+    <a class="px-1">hi</a>
+
+@endsection

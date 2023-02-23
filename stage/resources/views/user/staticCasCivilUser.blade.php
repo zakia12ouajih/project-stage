@@ -63,3 +63,10 @@
         </tbody>
     </table>
 @endsection
+@section('navbar2')
+<a  href="" class="navbar-brand text-light fw-bolder">
+    {{ __('msg.statistique') }}  / {{ __('msg.statistic_cas_civil') }}
+</a>
+    <a class="px-1">hi</a>
+
+@endsection
