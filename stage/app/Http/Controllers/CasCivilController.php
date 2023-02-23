@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class CasCivilController extends Controller
 {
 
-
+    // admin * user
     public function ajouteCivil(Request $request)
     {
         DB::table('cas_civils')->insert(
@@ -38,7 +38,7 @@ class CasCivilController extends Controller
         }    
     }
 
-
+    // admin * user
     public function viewCasCivil()
     {
         $role = Auth::user()->role;
@@ -50,12 +50,14 @@ class CasCivilController extends Controller
         }    
     }
 
+    // admin
     public function monthCasCivil(Request $request){
         $data = cas_delis::get()->where('date', '=', $request->input('search'));
         return view('admin.monthCasCivilSearch',compact('data'));
 
     }
 
+    // admin * user
     public function modifierCivil(Request $request, $id)
     {
         DB::table('cas_civils')->where('id', $id)->update([
@@ -77,6 +79,8 @@ class CasCivilController extends Controller
         }  
     }
 
+
+    //admin * user
     public function staticCasCivil(){
         $role = Auth::user()->role;
         if ($role == 1) {
@@ -85,11 +89,14 @@ class CasCivilController extends Controller
             return view('user.staticCasCivilUserSearch');
         }  
     }
-    public function CasCivilS(Request $request){
+
+    // admin * user
+    public function CasCivilS(){
         // $data = cas_civil::with('cas_type')->where('date',[$request->input('dateS')]);
         return view('user.viewCasCivilSearch');
     }
     
+    // admin *user
     public function statisticC(Request $request){
         $data = cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate();
         $sommeTable=cas_civil::count();
@@ -127,21 +134,16 @@ class CasCivilController extends Controller
         }  
         
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    
+    
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+     // admin * user
     public function createCivil()
     {
         $data = DB::table('cas_types')->where('genre', '=', 'civil')->get();
@@ -155,27 +157,9 @@ class CasCivilController extends Controller
         
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Storecas_civilRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Storecas_civilRequest $request)
-    {
-        //
-    }
+    
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\cas_civil  $cas_civil
-     * @return \Illuminate\Http\Response
-     */
-    public function show(cas_civil $cas_civil)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -183,6 +167,9 @@ class CasCivilController extends Controller
      * @param  \App\Models\cas_civil  $cas_civil
      * @return \Illuminate\Http\Response
      */
+
+    
+    // admin
     public function editCivil($id)
     {
         $modi = DB::table('cas_civils')->where('id', $id)->first();
@@ -190,24 +177,15 @@ class CasCivilController extends Controller
         return view('admin.editCasCivil', compact('modi', 'data'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\Updatecas_civilRequest  $request
-     * @param  \App\Models\cas_civil  $cas_civil
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Updatecas_civilRequest $request, cas_civil $cas_civil)
-    {
-        //
-    }
-
+    
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\cas_civil  $cas_civil
      * @return \Illuminate\Http\Response
      */
+
+     // admin
     public function destroyCivil($id)
     {
         DB::table('cas_civils')->where('id', $id)->delete();
