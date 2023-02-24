@@ -46,7 +46,8 @@ class CasCivilController extends Controller
             return view('admin.monthCasCivilSearch');
         }
         else{
-            return view('user.viewCasCivil');
+            return view('user.viewCasCivilSearch');
+
         }    
     }
 
@@ -91,9 +92,11 @@ class CasCivilController extends Controller
     }
 
     // admin * user
-    public function CasCivilS(){
-        // $data = cas_civil::with('cas_type')->where('date',[$request->input('dateS')]);
-        return view('user.viewCasCivilSearch');
+    
+    public function CasCivilT(Request $request){
+        $data = cas_civil::with('cas_type')->where('date',[$request->input('dateS')])->paginate(4);
+        // return $data;
+        return view('user.viewCasCivil',compact('data'));
     }
     
     // admin *user

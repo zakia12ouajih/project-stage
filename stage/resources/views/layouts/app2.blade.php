@@ -85,7 +85,7 @@
 </header>
 <nav class="navbar navbar-expand navbar-light bg-dark bg-opacity-50">
    <div class="container d-flex flex-row-reverse justify-content-between">
-      <div class="d-flex ">
+      <div class="d-flex  ">
          @yield('navbar2')
       </div>
    </div>

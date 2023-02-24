@@ -29,7 +29,7 @@ return[
    'voir_cas_civil'=>'الاطلاع على القضايا المدنية',
    'voir_cas_delis'=>'الاطلاع على القضايا الجنحية',
    'cas_civil'=>'القضايا المدنية',
-   'cas_delis'=>'القضابا الجنحية',
+   'cas_delis'=>'القضايا الجنحية',
    'code_type' => 'رمز القضية',
    'nom_type' => 'اسم القضية',
    'reste_derniere_session'=>'الباقي من الدورة الفائتة',
@@ -55,5 +55,6 @@ return[
    'Entrer_le resultat_du mois'=>'ادخال حصيلة الشهر',
    'Delis'=>'جنحي',
    'Civil'=>'مدني',
+   'Print'=>'طباعة',
 ]
 ?>
