@@ -8,7 +8,7 @@
             <h3>:{{ __('msg.somme') }}</h3>
             <p></p>
         </div>
-        <div class="col-3 purple rounded  mx-4 text-end"  >
+        <div class="col-3 red rounded  mx-4 text-end"  >
             <p>{{ __('msg.reste_derniere_session') }}</p>
             <h3>:{{ __('msg.somme') }}</h3>
             <p></p>
@@ -25,7 +25,7 @@
 </div>
 @endsection
 @section('navbar2')
-    <a  href="" class="navbar-brand ">
+    <a  href="" class="navbar-brand text-light fw-bolder">
         {{ __('msg.HomePage') }}
     </a>
     <a class="px-1">hi</a>

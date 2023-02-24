@@ -16,7 +16,7 @@
 @section('cas_civil')
    <a href="#" class="collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right " data-bs-toggle="collapse" data-bs-target="#demo3">{{ __('msg.cas_civil') }}</a>
       <div id="demo3" class="collapse py-1">
-         <a class="dropdown-item text-center" href='/user/CasCivil/search'>{{ __('msg.voir_cas_civil') }}</a>
+         <a class="dropdown-item text-center" href='/user/voir_cas_civil_user'>{{ __('msg.voir_cas_civil') }}</a>
       </div> 
 @endsection
 @section('cas_delis')

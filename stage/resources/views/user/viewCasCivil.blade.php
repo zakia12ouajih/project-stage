@@ -3,7 +3,7 @@
 @section('content')
    <div class="row justify-content-center">
         <div class="col-md-8">
-            <h4 class="display-4 text-end mb-3">{{ __('msg.voir_cas_civil') }}</h4>
+            <h4 class="display-8 text-center mb-3">{{ __('msg.voir_cas_civil') }}</h4>
             <table class="table table-hover table-bordered">
                 <thead >
                     <tr class="table-primary">
@@ -39,8 +39,8 @@
    </div>
 @endsection
 @section('navbar2')
-    <a  href="" class="navbar-brand ">
-        {{ __('msg.HomePage') }}
+    <a  href="" class="navbar-brand text-light fw-bolder ">
+        {{ __('msg.cas_civil') }}  / {{ __('msg.voir_cas_civil') }}
     </a>
     <a class="px-1">hi</a>
 
