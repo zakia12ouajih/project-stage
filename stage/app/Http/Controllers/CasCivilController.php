@@ -53,7 +53,7 @@ class CasCivilController extends Controller
     // admin
     public function monthCasCivil(Request $request){
         $data = cas_delis::get()->where('date', '=', $request->input('search'));
-        return view('admin.monthCasCivilSearch',compact('data'));
+        return view('admin.viewCasDelis',compact('data'));
 
     }
 
@@ -72,7 +72,7 @@ class CasCivilController extends Controller
         ]);
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->action([CasCivilController::class,'monthCasCivil']);
+            return redirect()->route('viewCasCivil');
         }
         else{
             return redirect()->route('viewCasCivil_user')->with('success', '');

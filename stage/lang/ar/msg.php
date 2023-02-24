@@ -42,6 +42,7 @@ return[
    'supprimer'=>'حذف',
    'somme' =>'المجموع',
    'choose'=>'--- اختر القضية ---',
+   'choose1'=>'--- اختر ---',
    'statistic_cas_civil'=>'احصائيات القضايا المدنية',
    'statistic_cas_delis'=>'احصائيات القضايا الجنحية',
    'datefrom'=>'من',
@@ -55,5 +56,11 @@ return[
    'Entrer_le resultat_du mois'=>'ادخال حصيلة الشهر',
    'Delis'=>'جنحي',
    'Civil'=>'مدني',
+   'ajouter_user'=>'اضافة مستخدم',
+   'voir_user'=>'الاطلاع على المستخدمين',
+   'users' => 'المستخدمين',
+   'user' => 'المستخدم',
+   'voir_users'=>'الاطلاع على المستخدمين',
+   'role' => 'الدور',
 ]
 ?>

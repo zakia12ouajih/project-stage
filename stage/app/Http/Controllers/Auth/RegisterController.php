@@ -5,12 +5,25 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
-{
+    {
+//     protected $redirectTo = '/';
+
+//     public function register(Request $request)
+//     {
+//         $this->validator($request->all())->validate();
+//         event(new Registered($user = $this->create($request->all())));
+//         return $this->registered($request, $user)
+//             ?: redirect($this->redirectPath());
+//     }
+
+    
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -29,7 +42,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.

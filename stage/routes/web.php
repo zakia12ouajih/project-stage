@@ -4,6 +4,7 @@ use App\Http\Controllers\CasCivilController;
 use App\Http\Controllers\CasDelisController;
 
 use App\Http\Controllers\CasTypeController;
+use App\Http\Controllers\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,13 @@ Route::get('/', function () {
 
 
 Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::controller(User::class)->group(function(){
+        // Route::get('/createUser','create');
+        Route::get('voir_user','viewUsers')->name('viewAdminUser');
+        Route::get('/editUser/{id}','editUser');
+        Route::put('/modiUser/{id}','modifierUser');
+        Route::get('/destroyUser/{id}','destroyUser');
+    });
 
     Route::controller(CasTypeController::class)->group(function () {
         Route::get('/form', 'create')->name('ajouter_cas');
@@ -36,7 +44,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::controller(CasCivilController::class)->group(function () {
         Route::post('/data_civil/add', 'ajouteCivil');
         Route::get('/data_civil', 'createCivil')->name('ajouter_civil');
-        Route::get('/voir_cas_civil', 'viewCasCivil');
+        Route::get('/voir_cas_civil', 'viewCasCivil')->name('viewCasCivil');
         Route::post('/voir_cas_civil/search', 'monthCasCivil');
         Route::get('/editCivil/{id}', 'editCivil');
         Route::put('/modCivil/{id}', 'modifierCivil');
@@ -48,8 +56,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::controller(CasDelisController::class)->group(function () {
         Route::post('/data_delis/add', 'ajouteDelis');
         Route::get('/data_delis', 'createDelis')->name('ajouter_delis');
-        Route::get('/voir_cas_delis', 'viewCasDelis');
-        Route::post('/voir_cas_delis/search', 'getData')->name('viewCasDelis');
+        Route::get('/voir_cas_delis', 'viewCasDelis')->name('viewCasDelisAdmin');
+        Route::post('/voir_cas_delis/search', 'getData');
         Route::get('/editDelis/{id}', 'editDelis');
         Route::put('/modDelis/{id}', 'modifierDelis');
         Route::get('/destroyDelis/{id}', 'destroyDelis');

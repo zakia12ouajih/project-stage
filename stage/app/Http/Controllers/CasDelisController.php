@@ -120,8 +120,6 @@ class CasDelisController extends Controller
 
     public function modifierDelis(Request $request, $id)
     {
-
-
         DB::table('cas_delis')->where('id', $id)->update([
             'reste_derniere_session' => $request->reste_derniere_session,
             'inscrit' => $request->inscrit,
@@ -134,7 +132,7 @@ class CasDelisController extends Controller
         ]);
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->route('');
+            return redirect()->route('viewCasDelisAdmin');
         }
         else{
             return redirect()->route('viewCasDelisUser')->with('success', '');
@@ -206,6 +204,6 @@ class CasDelisController extends Controller
     public function destroyDelis($id)
     {
         DB::table('cas_delis')->where('id', $id)->delete();
-        return redirect()->route('viewCasDelis');
+        return redirect()->route('viewCasDelisAdmin');
     }
 }
