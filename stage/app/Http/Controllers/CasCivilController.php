@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\cas_civil;
-use App\Http\Requests\Storecas_civilRequest;
-use App\Http\Requests\Updatecas_civilRequest;
-use App\Models\cas_delis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -53,8 +50,8 @@ class CasCivilController extends Controller
 
     // admin
     public function monthCasCivil(Request $request){
-        $data = cas_delis::get()->where('date', '=', $request->input('search'));
-        return view('admin.viewCasDelis',compact('data'));
+        $data = cas_civil::get()->where('date', '=', $request->input('search'));
+        return view('admin.viewCasCivil',compact('data'));
 
     }
 

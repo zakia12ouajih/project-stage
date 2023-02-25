@@ -2,15 +2,18 @@
 
 @section('content')
    <div class="row justify-content-center">
-      <div class="col-md-8">
-         <h4 class="display-4 text-end mb-3">{{ __('msg.enter_date') }}</h4>
+      <div class="col-7 mt-2 border border-1 rounded">
          <form action="/admin/staticCasCivilAdmin/search" method="POST">
             @csrf
-            <div class="row mb-3 d-flex justify-content-center align-items-center">
-               <div class="col-md-6 d-flex">
-                  <input class="btn bg-primary text-white" type="submit" value="envoyer" id="envoyer">
-                  <input  class="form-controller bg-warning" type="date" name="dateto" id="dateto">
-                  <input  class="form-controller" type="date" name="datefrom" id="datefrom">
+            <div class="row mb-3 d-flex bg-white justify-content-center align-items-center ">
+               <div class=" col-8    pt-3 pb-3">
+                  <h5 class="text-end mt-2 py-2">{{ __('msg.datefrom') }}</h5>
+                  <input  class="form-control" type="date" name="datefrom" id="datefrom">
+                  <h5 class="text-end mt-2 py-2">{{ __('msg.dateto') }}</h5>
+                  <input  class="form-control mb-5" type="date" name="dateto" id="dateto">
+                  <div class="d-flex  justify-content-center align-items-center">
+                     <input class="btn bg-primary text-white " type="submit" value="{{ __('msg.envoyer') }}" id="envoyer">
+                  </div>
                </div>
             </div>
          </form>

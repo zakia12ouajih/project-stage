@@ -7,6 +7,7 @@ return[
    'lastName' => 'النسب',
    'userName' => 'اسم المستخدم',
    'email' => ' البريد الالكتروني',
+   'admin' => 'المشرف',
    'password' => 'كلمة المرور',
    'confirm-password' => 'تأكيد كلمة المرور',
    'rememberMe' => 'تذكرني على هذا الجهاز',
@@ -45,8 +46,8 @@ return[
    'choose1'=>'--- اختر ---',
    'statistic_cas_civil'=>'احصائيات القضايا المدنية',
    'statistic_cas_delis'=>'احصائيات القضايا الجنحية',
-   'datefrom'=>'من',
-   'dateto'=>'إلى',
+   'datefrom'=>'التاريخ من',
+   'dateto'=>'التاريخ الى',
    'enter_date'=>'ادخل التاريخ',
    'statistique'=>'الاحصائيات',
    'genre' =>'نوع القضية',
@@ -56,15 +57,12 @@ return[
    'Entrer_le resultat_du mois'=>'ادخال حصيلة الشهر',
    'Delis'=>'جنحي',
    'Civil'=>'مدني',
-<<<<<<< HEAD
    'ajouter_user'=>'اضافة مستخدم',
    'voir_user'=>'الاطلاع على المستخدمين',
    'users' => 'المستخدمين',
    'user' => 'المستخدم',
    'voir_users'=>'الاطلاع على المستخدمين',
    'role' => 'الدور',
-=======
    'Print'=>'طباعة',
->>>>>>> b6dc449206f00d6423d7c8d9091d5a684472852e
 ]
 ?>

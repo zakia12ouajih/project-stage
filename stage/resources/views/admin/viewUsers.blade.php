@@ -3,12 +3,12 @@
 @section('content')
    <div class="row justify-content-center">
       <div class="col-md-8">
-         <h4 class="display-4 text-end mb-3">{{ __('msg.voir_users') }}</h4>
+         <h4 class="fw-bolder text-center mb-3">{{ __('msg.voir_users') }}</h4>
             <table class="table table-hover table-bordered" name='cas_civil'>
                <thead >
                   <tr class="table-primary">
-                     <th class="text-center" scope="col">{{ __('msg.modifier') }}</th>
                      <th class="text-center" scope="col">{{ __('msg.supprimer') }}</th>
+                     <th class="text-center" scope="col">{{ __('msg.modifier') }}</th>
                      <th class="text-center" scope="col">{{ __('msg.firstName') }}</th>
                      <th class="text-center" scope="col">{{ __('msg.lastName') }}</th>
                      <th class="text-center" scope="col">{{ __('msg.userName') }}</th>
@@ -20,8 +20,8 @@
                <tbody class="text-center">
                   @foreach ($data as $d)
                      <tr>
-                        <td><a href="{{ URL('/admin/editUser',$d->id) }}"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
                         <td><a href="{{ URL('/admin/destroyUser',$d->id) }}"><button class='btn btn-danger'>{{ __('msg.supprimer') }}</button></a></td>
+                        <td><a href="{{ URL('/admin/editUser',$d->id) }}"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
                         <td>{{ $d->firstName}}</td> 
                         <td>{{ $d->lastName}}</td>
                         <td>{{ $d->userName }}</td>
