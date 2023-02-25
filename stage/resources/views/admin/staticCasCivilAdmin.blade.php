@@ -3,7 +3,8 @@
 @section('content')
    <div class="row justify-content-center">
       <div class="col-md-8">
-         <h4 class="fw-bolder text-center mb-3">{{ __('msg.statistic_cas_civil') }}</h4>
+         <div id="printableArea">
+            <h4 class="fw-bolder text-center mb-3">{{ __('msg.statistic_cas_civil') }}</h4>
             <table class="table table-hover table-bordered" name='cas_civil'>
                <thead >
                   <tr class="table-primary">
@@ -52,15 +53,7 @@
                   </tr>
                </tbody>
             </table> 
-            <script>
-               function printableDiv(printableAreaDivId) {
-                  var printContents = document.getElementById(printableAreaDivId).innerHTML;
-                  var originalContents = document.body.innerHTML;
-                  document.body.innerHTML = printContents;
-                  window.print();
-                  document.body.innerHTML = originalContents;
-               }
-            </script>
+         </div>
       </div>
       <div class="row justify-content-center">
          <div class="col-md-8  d-flex justify-content-center align-items-center">
@@ -71,3 +64,13 @@
    
    
 @endsection
+
+<script>
+   function printableDiv(printableAreaDivId) {
+      var printContents = document.getElementById(printableAreaDivId).innerHTML;
+      var originalContents = document.body.innerHTML;
+      document.body.innerHTML = printContents;
+      window.print();
+      document.body.innerHTML = originalContents;
+   }
+</script>
