@@ -50,8 +50,8 @@
    @section('voir_les_utilisateurs')
    <a href="#" class="collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right " data-bs-toggle="collapse" data-bs-target="#demo6">{{ __('msg.users') }}</a>
    <div id="demo6" class="collapse py-1">
-      {{-- <a class="dropdown-item text-center" href='/admin/createUser'>{{ __('msg.ajouter_user') }}</a> --}}
-      <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+      <a class="dropdown-item text-center" href='/admin/createUser'>{{ __('msg.ajouter_user') }}</a>
+      {{-- <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a> --}}
       <a class="dropdown-item text-center" href="/admin/voir_user">{{ __('msg.voir_user') }}</a>
    </div> 
 @endsection

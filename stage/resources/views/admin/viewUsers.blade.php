@@ -31,6 +31,7 @@
                   @endforeach
                </tbody>
             </table>
+            <div class="justify-content-center align-items-center d-flex">{{ $data->links() }}</div>
       </div>
    </div>
    {{-- <h2>hello</h2> --}}

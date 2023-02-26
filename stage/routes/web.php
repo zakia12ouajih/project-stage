@@ -5,6 +5,7 @@ use App\Http\Controllers\CasDelisController;
 
 use App\Http\Controllers\CasTypeController;
 use App\Http\Controllers\User;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,8 +26,9 @@ Route::get('/', function () {
 
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::controller(User::class)->group(function(){
-        // Route::get('/createUser','create');
+    Route::controller(UserController::class)->group(function(){
+        Route::get('/createUser','returnView');
+        Route::post('/addUser','register');
         Route::get('voir_user','viewUsers')->name('viewAdminUser');
         Route::get('/editUser/{id}','editUser');
         Route::put('/modiUser/{id}','modifierUser');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -16,16 +17,24 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
     {
-
-
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
-        $this->validator($request->all())->validate();
-        event(new Registered($user = $this->create($request->all())));
-        // $this->guard()->login($user);
-        // return $this->registered($request, $user) ? : redirect($this->redirectPath());
-        return $this->registered($request, $user) ? : redirect($this->back());
+        $user = User::create($request->validated());
+
+        auth()->login($user);
+
+        // return redirect()->with('success', "Account successfully registered.");
+        return redirect()->back();
     }
+
+    // public function register(Request $request)
+    // {
+    //     $this->validator($request->all())->validate();
+    //     event(new Registered($user = $this->create($request->all())));
+    //     // $this->guard()->login($user);
+    //     // return $this->registered($request, $user) ? : redirect($this->redirectPath());
+    //     return $this->registered($request, $user) ? : redirect($this->back());
+    // }
 
 
     

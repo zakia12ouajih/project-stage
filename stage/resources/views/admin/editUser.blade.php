@@ -43,10 +43,10 @@
                   </div>
                   <div class="row mb-3  mt-3 d-flex justify-content-center align-items-center">
                      <div class="col-7">
-                        <select class="text-end form-select form-select-lg" name="role" id="role">
-                           <option selected >{{ __('msg.choose1') }}</option>
-                           <option value="1">{{ __('msg.admin') }}</option>
-                           <option value="0">{{ __('msg.user') }}</option>
+                        <select  class="text-end form-select form-select-lg" name="role" id="role">
+                           {{-- <option >{{ __('msg.choose1') }}</option> --}}
+                           <option value="1" {{ $modiUser->role == '1' ? 'selected="selected"' : '' }}>{{ __('msg.admin') }}</option>
+                           <option value="0" {{ $modiUser->role == '0' ? 'selected="selected"' : '' }}>{{ __('msg.user') }}</option>
                         </select>
                      </div>
                      <label for="role" class="col-3 col-form-label text-md-end">{{ __('msg.role') }}</label>
