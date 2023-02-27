@@ -10,9 +10,9 @@
                <th class="text-center" scope="col">{{ __('msg.supprimer') }}</th>
                <th class="text-center" scope="col">{{ __('msg.modifier') }}</th>
                <th class="text-center" scope="col">{{ __('msg.reste_sans_jugement') }}</th>
+               <th class="text-center" scope="col">{{ __('msg.comdamne') }}</th>
                <th class="text-center" scope="col">{{ __('msg.somme') }}</th>
                <th class="text-center" scope="col">{{ __('msg.inscrit') }}</th>
-               <th class="text-center" scope="col">{{ __('msg.comdamne') }}</th>
                <th class="text-center" scope="col">{{ __('msg.reste_derniere_session') }}</th>
                <th class="text-center" scope="col">{{ __('msg.date') }}</th>
                <th class="text-center" scope="col">{{ __('msg.userName') }}</th>

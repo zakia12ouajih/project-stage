@@ -44,12 +44,7 @@
                      </div>
                      <label for="comdamne" class="col-3 col-form-label text-md-end">{{ __('msg.comdamne') }}</label>
                   </div>
-                  <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
-                     <div class="col-7">
-                        <input id="reste_sans_jugement" type="number" class="form-control text-end" name="reste_sans_jugement"  />
-                     </div>
-                     <label for="reste_sans_jugement" class="col-3 col-form-label text-md-end">{{ __('msg.reste_sans_jugement') }}</label>
-                  </div>
+                  
                   <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
                      <div class="col-7">
                         <input id="date" type="date" class="form-control text-end" name="date"  />

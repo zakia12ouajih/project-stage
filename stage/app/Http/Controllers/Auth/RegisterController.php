@@ -17,15 +17,15 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
     {
-    public function register(RegisterRequest $request)
-    {
-        $user = User::create($request->validated());
+    // public function register(RegisterRequest $request)
+    // {
+    //     $user = User::create($request->validated());
 
-        auth()->login($user);
+    //     auth()->login($user);
 
-        // return redirect()->with('success', "Account successfully registered.");
-        return redirect()->back();
-    }
+    //     // return redirect()->with('success', "Account successfully registered.");
+    //     return redirect()->back();
+    // }
 
     // public function register(Request $request)
     // {

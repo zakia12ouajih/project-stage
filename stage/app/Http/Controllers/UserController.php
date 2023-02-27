@@ -35,7 +35,7 @@ class UserController extends Controller
     
 
     public function returnView(){
-        return view('auth.register');
+        return view('admin.registerUserAdmin');
     }
 
     
