@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\cas_civil;
-use App\Http\Requests\Storecas_civilRequest;
-use App\Http\Requests\Updatecas_civilRequest;
-use App\Models\cas_delis;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,7 +19,7 @@ class CasCivilController extends Controller
                 'inscrit' => $request->inscrit,
                 'somme' => $request->reste_derniere_session + $request->inscrit,
                 'comdamne' => $request->comdamne,
-                'reste_sans_jugement' => $request->reste_sans_jugement,
+                'reste_sans_jugement' => ($request->reste_derniere_session + $request->inscrit) - $request->comdamne,
                 'date' => $request->date,
                 'id_type' => $request->type,
                 'data_user_enter' => Auth::user()->userName,
@@ -53,8 +50,8 @@ class CasCivilController extends Controller
 
     // admin
     public function monthCasCivil(Request $request){
-        $data = cas_delis::get()->where('date', '=', $request->input('search'));
-        return view('admin.viewCasDelis',compact('data'));
+        $data = cas_civil::get()->where('date', '=', $request->input('search'));
+        return view('admin.viewCasCivil',compact('data'));
 
     }
 

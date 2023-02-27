@@ -4,35 +4,33 @@
 @section('content')
    <div class="container">
       <div class="row justify-content-center">
-         <div class="col-md-6">
+         <div class="col-md-7">
             <div class="card  py-4">
                <form action="/admin/form/add" method="POST">
                   @csrf
-                  <div class="row mb-3">
-                     <label for="code_type" class="col-md-4 col-form-label text-md-end">{{ __('msg.code_type') }}</label>
-                     <div class="col-md-6">
-                        <input id="code_type" type="text" class="form-control " name="code_type"  />
+                  <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center ">
+                     <div class="col-7">
+                        <input id="code_type" type="text" class="form-control text-end" name="code_type"  />
                      </div>
+                     <label for="code_type" class="col-3 col-form-label text-md-end">{{ __('msg.code_type') }}</label>
                   </div>
-                  <div class="row mb-3">
-                     <label for="nom_type" class="col-md-4 col-form-label text-md-end">{{ __('msg.nom_type') }}</label>
-                     <div class="col-md-6">
-                        <input id="nom_type" type="text" class="form-control " name="nom_type"  />
+                  <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
+                     <div class="col-7">
+                        <input id="nom_type" type="text" class="form-control text-end " name="nom_type"  />
                      </div>
+                     <label for="nom_type" class="col-3 col-form-label text-md-end">{{ __('msg.nom_type') }}</label>
                   </div>
-                  <div class="row mb-5">
-                     <label for="genre" class="col-md-4 col-form-label text-md-end">{{ __('msg.genre') }}</label>
-                     <div class="col-md-6">
-                        <div class="">
-                           <select class="form-select form-select-lg" name="genre" id="genre">
-                              <option value="civil">{{ __('msg.civil') }}</option>
-                              <option value="delis">{{ __('msg.delis') }}</option>
+                  <div class="row mb-5 mt-3 d-flex justify-content-center align-items-center">
+                     <div class="col-7">
+                           <select class="form-select form-select-lg text-end" name="genre" id="genre">
+                              <option  value="civil">{{ __('msg.civil') }}</option>
+                              <option  value="delis">{{ __('msg.delis') }}</option>
                            </select>
-                        </div>
                      </div>
+                     <label for="genre" class="col-3 col-form-label text-md-end">{{ __('msg.genre') }}</label>
                   </div>
-                  <div class="row mb-0 ">
-                     <div class="col-md-8 offset-md-4">
+                  <div class="row mb-2  d-flex justify-content-center align-items-center">
+                     <div class="col-6 offset-3">
                         <input class="btn btn-primary" type="submit" value={{ __('msg.envoyer') }}>
                      </div>
                   </div>

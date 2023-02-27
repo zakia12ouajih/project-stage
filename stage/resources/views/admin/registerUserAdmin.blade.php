@@ -1,5 +1,4 @@
-{{-- @extends('admin.adminLayouts') --}}
-@extends('layouts.app')
+@extends('admin.adminLayouts')
 
 @section('content')
 <div class="container">
@@ -9,8 +8,7 @@
                 
 
                 <div class="card-body">
-                    {{-- <form method="POST" action="/admin/addUser"> --}}
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="/admin/addUser">
                         @csrf
 
                         <div class="row mb-3 mt-3 justify-content-center align-items-center">
