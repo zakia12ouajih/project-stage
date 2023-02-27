@@ -23,11 +23,7 @@
         @yield('navbar')
         
         
-<<<<<<< HEAD
         <main class="py-2 mt-3">
-=======
-        <main class="py-2 mt-4">
->>>>>>> 4dd68ec3c30af784f1307bd8c43ed224744cabbc
             @yield('content')
         </main>
     </div>
