@@ -3,7 +3,39 @@
    width: 45px;
    height: 45px;
 }
-
+.color {
+background-color: #c6cbec;
+}
+.h5{
+   text-align: center;
+   
+}
+.h5:hover{
+   background-color: cornflowerblue;
+   border-radius: 10px;
+   
+}
+.t5:hover{
+ color: white;
+    
+}
+.h5 .alien:hover{
+   color:white;
+}
+.alien{
+   text-decoration: none;
+   color: black;
+}
+.len {
+   padding-top: 10px;
+   padding-bottom: 10px;
+}
+.fs{
+   font-size: 20px;
+}
+/* .lien:hover{
+      /* background-color:; */
+  /*  */
 
 
 

@@ -1,4 +1,7 @@
 <?php
+
+use GrahamCampbell\ResultType\Success;
+
 return[
    'welcome' => 'مرحبا',
    'login' => 'تسجيل الدخول',
@@ -56,15 +59,13 @@ return[
    'Entrer_le resultat_du mois'=>'ادخال حصيلة الشهر',
    'Delis'=>'جنحي',
    'Civil'=>'مدني',
-<<<<<<< HEAD
    'ajouter_user'=>'اضافة مستخدم',
    'voir_user'=>'الاطلاع على المستخدمين',
    'users' => 'المستخدمين',
    'user' => 'المستخدم',
    'voir_users'=>'الاطلاع على المستخدمين',
    'role' => 'الدور',
-=======
    'Print'=>'طباعة',
->>>>>>> b6dc449206f00d6423d7c8d9091d5a684472852e
+   'operation_accomplie_ave_Success'=>'لقد تمت العملية بنجاح '
 ]
 ?>

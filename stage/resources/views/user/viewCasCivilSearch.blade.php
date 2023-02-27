@@ -19,7 +19,7 @@
                         
 
 @section('navbar2')
-    <a  href="" class="navbar-brand text-light fw-bolder ">
+    <a  href="" class="fs navbar-brand text-light fw-bolder ">
         {{ __('msg.cas_civil') }} 
     </a>
     <a class="px-1">hi</a>

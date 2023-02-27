@@ -17,7 +17,7 @@
          <ul class="navbar-nav  ">
             <h4 class="text-muted text-center pt-2">{{ Auth::user()->userName }}</h4>
          </ul>
-         <div class="offcanvas bg-light bg-gradient offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+         <div class="offcanvas color offcanvas-end" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header justify-content-between">
                <p></p>
@@ -54,7 +54,7 @@
                      @yield('voir_les_utilisateurs')
                   </li>
                   <li class="nav-item">
-                     <a href="#" class="collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right " data-bs-toggle="collapse" data-bs-target="#demox">{{ __('msg.logout') }}</a>             
+                     <h5 class="h5"><a href="#" class=" alien collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right " data-bs-toggle="collapse" data-bs-target="#demox">{{ __('msg.logout') }}</a></h5>            
                      @guest
                         @if (Route::has('login'))
                            <a class="nav-link " href="{{ route('login') }}"></a>
@@ -62,12 +62,10 @@
                      @else
                         <li class="nav-item ">
                            <div id="demox" class="collapse">
-                              <a class="dropdown-item text-center" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                 document.getElementById('logout-form').submit();">
+                              <a class=" t5 dropdown-item text-center" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                  {{ __('msg.logout') }}
                               </a>
-                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" class=" d-none">
                                  @csrf
                               </form>
                            </div>
@@ -83,32 +81,19 @@
    
    
 </header>
-<nav class="navbar navbar-expand navbar-light bg-dark bg-opacity-50">
-   <div class="container d-flex flex-row-reverse justify-content-between">
-      <div class="d-flex  ">
-         @yield('navbar2')
+
+   <div class="container-fluid  bg-dark bg-opacity-25 ">
+      <div class="row d-flex flex-row-reverse align-items-center ">
+         
+
+         <div class="d-flex col-3 text-end  justify-content-center align-items-center">
+            @yield('navbar2')
+         </div>
       </div>
-   </div>
+      
+   
       
 
-   {{-- <a class="navbar-brand" href="#">Navbar</a>
    
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-         <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-         </li>
-         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdownId">
-               <a class="dropdown-item" href="#">Action 1</a>
-               <a class="dropdown-item" href="#">Action 2</a>
-            </div>
-         </li>
-      </ul>
-      
-   </div> --}}
-</nav>
+</div>
 @endsection

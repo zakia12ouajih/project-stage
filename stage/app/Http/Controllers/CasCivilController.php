@@ -94,14 +94,14 @@ class CasCivilController extends Controller
     // admin * user
     
     public function CasCivilT(Request $request){
-        $data = cas_civil::with('cas_type')->where('date',[$request->input('dateS')])->paginate(4);
+        $data = cas_civil::with('cas_type')->where('date',[$request->input('dateS')])->get();
         // return $data;
         return view('user.viewCasCivil',compact('data'));
     }
     
     // admin *user
     public function statisticC(Request $request){
-        $data = cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->paginate();
+        $data = cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->get();
         $sommeTable=cas_civil::count();
         $sommerest=0;
         $sommeinscrit=0;

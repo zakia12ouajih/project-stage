@@ -3,6 +3,13 @@
 @section('content')
    <div class="container">
       <div class="row justify-content-center">
+         @if (Session::has('success'))
+            <div class="mb-3 mt-3 d-flex justify-content-center align-items-center alert alert-success alert-dismissible " role="alert">
+               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+               <strong>{{ __('msg.operation_accomplie_ave_Success') }}</strong> 
+            </div>
+            
+         @endif
          <div class="col-md-6">
             <div class="card py-4">
                <form action="/user/data_civil/add" method="POST">
@@ -61,7 +68,7 @@
    </div>
 @endsection
 @section('navbar2')
-    <a  href="" class="navbar-brand text-light fw-bolder ">
+    <a  href="" class="fs navbar-brand text-light fw-bolder ">
       {{ __('msg.Entrer_le resultat_du mois') }}   / {{ __('msg.Civil') }} 
     </a>
     <a class="px-1">hi</a>
