@@ -89,7 +89,7 @@
 
                         <div class="row mb-3 justify-content-center align-items-center">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     {{ __('msg.register') }}
                                 </button>
                             </div>
@@ -100,4 +100,10 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('navbar2')
+    <a  href="" class="fs navbar-brand text-white fw-bolder">
+        {{ __('msg.users') }} / {{ __('msg.ajouter_user') }}
+    </a>
 @endsection

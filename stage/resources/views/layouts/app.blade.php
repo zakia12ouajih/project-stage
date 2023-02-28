@@ -21,6 +21,8 @@
 <body>
     <div id="app container-fluid">
         @yield('navbar')
+        
+        
     </div>
     <main class="py-2 mt-3">
         @yield('content')

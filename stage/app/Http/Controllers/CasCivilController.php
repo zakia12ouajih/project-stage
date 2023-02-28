@@ -63,14 +63,14 @@ class CasCivilController extends Controller
             'inscrit' => $request->inscrit,
             'somme' => $request->reste_derniere_session + $request->inscrit,
             'comdamne' => $request->comdamne,
-            'reste_sans_jugement' => $request->reste_sans_jugement,
+            'reste_sans_jugement' => ($request->reste_derniere_session + $request->inscrit) - $request->comdamne,
             'date' => $request->date,
             'id_type' => $request->type,
             'data_user_enter' => Auth::user()->userName,
         ]);
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->route('viewCasCivil');
+            return redirect()->route('viewCasCivil')->with('success' ,'');
         }
         else{
             return redirect()->route('viewCasCivil_user')->with('success', '');

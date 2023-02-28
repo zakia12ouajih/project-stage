@@ -45,12 +45,7 @@
                      </div>
                      <label for="comdamne" class="col-3 col-form-label text-md-end">{{ __('msg.comdamne') }}</label>
                   </div>
-                  <div class="row mb-3  mt-3 d-flex justify-content-center align-items-center">
-                     <div class="col-md-6">
-                        <input id="reste_sans_jugement" type="number" class="form-control text-end " value="{{ $modi->reste_sans_jugement}}" name="reste_sans_jugement"  />
-                     </div>
-                     <label for="reste_sans_jugement" class="col-3 col-form-label text-md-end">{{ __('msg.reste_sans_jugement') }}</label>
-                  </div>
+                  
                   <div class="row mb-3  mt-3 d-flex justify-content-center align-items-center">
                      <div class="col-md-6">
                         <input id="date" type="date" class="form-control text-end " name="date" value="{{ $modi->date}}" />
@@ -67,4 +62,11 @@
          </div>
       </div>
    </div>
+@endsection
+
+@section('navbar2')
+   <a  href="" class="fs navbar-brand text-white fw-bolder">
+         {{ __('msg.cas_civil') }} / {{ __('msg.editCasCivil') }} 
+   </a>
+   
 @endsection

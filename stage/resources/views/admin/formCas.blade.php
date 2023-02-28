@@ -6,6 +6,12 @@
       <div class="row justify-content-center">
          <div class="col-md-7">
             <div class="card  py-4">
+               @if (Session::has('success'))
+                  <div class="alert alert-success alert-dismissible " role="alert">
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                     <strong>{{ __('msg.operation_accomplie_ave_Success') }}</strong> 
+                  </div>
+               @endif
                <form action="/admin/form/add" method="POST">
                   @csrf
                   <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center ">
@@ -39,4 +45,12 @@
          </div>
       </div>
    </div>
+@endsection
+
+
+@section('navbar2')
+   <a  href="" class="fs navbar-brand text-white fw-bolder">
+      {{ __('msg.cas') }} / {{ __('msg.ajouter_cas') }}
+   </a>
+   
 @endsection
