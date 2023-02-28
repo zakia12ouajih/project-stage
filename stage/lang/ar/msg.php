@@ -67,9 +67,6 @@ return[
    'voir_users'=>'الاطلاع على المستخدمين',
    'role' => 'الدور',
    'Print'=>'طباعة',
-<<<<<<< HEAD
    'operation_accomplie_ave_Success'=>'لقد تمت العملية بنجاح '
-=======
->>>>>>> 4dd68ec3c30af784f1307bd8c43ed224744cabbc
 ]
 ?>

@@ -12,6 +12,7 @@
                         <th class="text-center" scope="col">{{ __('msg.somme') }}</th>
                         <th class="text-center" scope="col">{{ __('msg.inscrit') }}</th>
                         <th class="text-center" scope="col">{{ __('msg.reste_derniere_session') }}</th>
+                        <th class="text-center" scope="col">{{ __('msg.code_type') }}</th>
                         <th class="text-center" scope="col">{{ __('msg.cas1') }}</th>
                         <th class="text-center" scope="col">{{ __('msg.date') }}</th>
                         
@@ -26,6 +27,7 @@
                             <td>{{ $d->somme }}</td>
                             <td>{{ $d->inscrit }}</td>
                             <td>{{ $d->reste_derniere_session }}</td>
+                            <td>{{ $d->cas_type->code_type}}</td>
                             <td>{{ $d->cas_type->nom_type}}</td> 
                             <td>{{ $d->date }}</td>
                             
@@ -41,6 +43,4 @@
     <a  href="" class="fs navbar-brand text-light fw-bolder ">
         {{ __('msg.cas_civil') }}  / {{ __('msg.voir_cas_civil') }}
     </a>
-    <a class="px-1">hi</a>
-
 @endsection

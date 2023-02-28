@@ -20,7 +20,7 @@ class CasDelisController extends Controller
                 'inscrit' => $request->inscrit,
                 'somme' => $request->reste_derniere_session + $request->inscrit,
                 'comdamne' => $request->comdamne,
-                'reste_sans_jugement' => ($request->reste_derniere_session + $request->inscrit) - $request->comdamne,
+                'reste_sans_jugement' => $request->reste_sans_jugement,
                 'date' => $request->date,
                 'id_type' => $request->type,
                 'data_user_enter' => Auth::user()->userName,
@@ -42,14 +42,18 @@ class CasDelisController extends Controller
 
     public function viewCasDelis()
     {
-        $data = cas_delis::with('cas_type')->paginate($perPage = 5, $columns =['*'], $pageName ='cas_delis');
         $role = Auth::user()->role;
         if($role==1){
-            return view('admin.monthCasDelisSearch', compact('data'));
+            return view('admin.monthCasDelisSearch');
         }
         else{
-            return view('user.UsviewCasD', compact('data'));
+            return view('user.viewCasDélisSearch');
         }
+    }
+    public function CasDelisT(Request $request){
+        $data = cas_delis::with('cas_type')->where('date',[$request->input('search')])->paginate(5);
+        // return $data;
+        return view('user.UsviewCasD ',compact('data'));
     }
     public function statisticD(Request $request){
         $data = cas_delis::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->get();

@@ -4,7 +4,7 @@
    <div class="row justify-content-center">
         <div class="col-md-8">
             <div id="printableArea">
-                <h4 class="display-4 text-end mb-3">{{ __('msg.voir_cas_civil') }}</h4>
+                <h4 class="display-8 text-center mb-3">{{ __('msg.statistic_cas_civil') }}</h4>
                 <table class="table table-hover table-bordered">
                     <thead >
                         <tr class="table-primary">
@@ -13,6 +13,7 @@
                             <th class="text-center" scope="col">{{ __('msg.somme') }}</th>
                             <th class="text-center" scope="col">{{ __('msg.inscrit') }}</th>
                             <th class="text-center" scope="col">{{ __('msg.reste_derniere_session') }}</th>
+                            <th class="text-center" scope="col">{{ __('msg.code_type') }}</th>
                             <th class="text-center" scope="col">{{ __('msg.cas1') }}</th>
                             <th class="text-center" scope="col">{{ __('msg.date') }}</th>
                         </tr>
@@ -26,6 +27,7 @@
                                 <td>{{ $d->somme }}</td>
                                 <td>{{ $d->inscrit }}</td>
                                 <td>{{ $d->reste_derniere_session }}</td>
+                                <td>{{ $d->cas_type->code_type}}</td> 
                                 <td>{{ $d->cas_type->nom_type}}</td> 
                                 <td>{{ $d->date }}</td>
                             </tr>
@@ -72,10 +74,10 @@
             </div>
         </div>
    </div>
-    @section('navbar2')
-        <a  href="" class=" fs navbar-brand text-light fw-bolder">
-            {{ __('msg.statistique') }}  / {{ __('msg.statistic_cas_civil') }}
-        </a>
-        <a class="px-1">hi</a>
-    @endsection
+@endsection
+@section('navbar2')
+    <a  href="" class=" fs navbar-brand text-light fw-bolder">
+        {{ __('msg.statistique') }}  / {{ __('msg.statistic_cas_civil') }}
+    </a>
+        
 @endsection

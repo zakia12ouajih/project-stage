@@ -3,7 +3,7 @@
 @section('content')
    <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="/user/casCivilT/search" method="POST">
+            <form action="/user/casDelisT/search" method="POST">
                 @csrf
                 <div class="row mb-3 d-flex bg-white justify-content-center align-items-center">
                     <div class="col-8 pt-3 pb-3">
@@ -22,8 +22,6 @@
 
 @section('navbar2')
     <a  href="" class="fs navbar-brand text-light fw-bolder ">
-        {{ __('msg.cas_civil') }} 
+        {{ __('msg.cas_delis') }} 
     </a>
-    
-
 @endsection

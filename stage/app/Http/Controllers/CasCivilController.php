@@ -91,9 +91,9 @@ class CasCivilController extends Controller
     // admin * user
     
     public function CasCivilT(Request $request){
-        $data = cas_civil::with('cas_type')->where('date',[$request->input('dateS')])->get();
-        // return $data;
+        $data = cas_civil::get()->where('date', '=', $request->input('search'));
         return view('user.viewCasCivil',compact('data'));
+
     }
     
     // admin *user

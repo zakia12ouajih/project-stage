@@ -86,7 +86,7 @@
       <div class="row d-flex flex-row-reverse align-items-center ">
          
 
-         <div class="d-flex col-3 text-end  justify-content-center align-items-center">
+         <div class="d-flex col-5 text-end  justify-content-center align-items-center">
             @yield('navbar2')
          </div>
       </div>

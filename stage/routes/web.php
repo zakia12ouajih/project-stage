@@ -87,6 +87,7 @@ Route::prefix('user')->middleware('auth')->group(function(){
         Route::get('/voir_cas_delis_user', 'viewCasDelis')->name('viewCasDelis_user');
         Route::get('/staticCasDelisUser','staticCasDelis');
         Route::post('/staticCasDelis/search','StatisticD');
+        Route::post('/casDelisT/search','CasDelisT');
     });
 });
 

@@ -44,12 +44,8 @@
                      </div>
                      <label for="comdamne" class="col-md-3 col-form-label text-md-end">{{ __('msg.comdamne') }}</label>
                   </div>
-                  <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
-                     <div class="col-md-6">
-                        <input id="reste_sans_jugement" type="number" class="form-control text-end " name="reste_sans_jugement"  />
-                     </div>
-                     <label for="reste_sans_jugement" class="col-md-3 col-form-label text-md-end">{{ __('msg.reste_sans_jugement') }}</label>
-                  </div>
+                  
+                  
                   <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
                      <div class="col-md-6">
                         <input id="date" type="date" class="form-control text-end" name="date"  />
@@ -68,9 +64,7 @@
    </div>
 @endsection
 @section('navbar2')
-    <a  href="" class="fs navbar-brand text-light fw-bolder ">
+   <a  href="" class="fs navbar-brand text-light fw-bolder ">
       {{ __('msg.Entrer_le resultat_du mois') }}   / {{ __('msg.Civil') }} 
-    </a>
-    <a class="px-1">hi</a>
-
+   </a>
 @endsection
