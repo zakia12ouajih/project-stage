@@ -1,6 +1,5 @@
 <?php
 
-use GrahamCampbell\ResultType\Success;
 
 return[
    'welcome' => 'مرحبا',
@@ -68,5 +67,7 @@ return[
    'role' => 'الدور',
    'Print'=>'طباعة',
    'operation_accomplie_ave_Success'=>'لقد تمت العملية بنجاح ',
+   'editCas' => 'تعديل القضية',
+   'moi'=>'حصيلة الشهر',
 ]
 ?>

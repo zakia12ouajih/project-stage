@@ -23,9 +23,9 @@
         @yield('navbar')
         
         
-        <main class="py-2 mt-3">
-            @yield('content')
-        </main>
     </div>
+    <main class="py-2 mt-3">
+        @yield('content')
+    </main>
 </body>
 </html>

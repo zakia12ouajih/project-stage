@@ -6,7 +6,7 @@
          @if (Session::has('success'))
             <div class="alert alert-success alert-dismissible " role="alert">
                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-               <strong>{{ __('msg.success') }}</strong> Alert Content
+               <strong>{{ __('msg.operation_accomplie_ave_Success') }}</strong> 
             </div>
             
          @endif
@@ -53,7 +53,7 @@
                   </div>
                   <div class="row mb-0 mt-3 d-flex justify-content-center align-items-center">
                      <div class="col-7 offset-5">
-                        <input class="btn btn-primary" type="submit" value={{ __('msg.envoyer') }}>
+                        <input class="btn btn-success" type="submit" value={{ __('msg.envoyer') }}>
                      </div>
                   </div>
                </form>
@@ -61,4 +61,11 @@
          </div>
       </div>
    </div>
+@endsection
+
+@section('navbar2')
+   <a  href="" class="fs navbar-brand text-white fw-bolder">
+      {{ __('msg.cas_delis') }} / {{ __('msg.moi') }}
+   </a>
+   
 @endsection

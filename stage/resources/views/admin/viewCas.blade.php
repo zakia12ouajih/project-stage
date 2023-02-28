@@ -32,3 +32,10 @@
 
 
 @endsection
+
+@section('navbar2')
+   <a  href="" class="fs navbar-brand text-white fw-bolder">
+         {{ __('msg.voir_cas') }} 
+   </a>
+   
+@endsection

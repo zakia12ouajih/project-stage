@@ -37,3 +37,10 @@
    {{-- <h2>hello</h2> --}}
    
 @endsection
+
+@section('navbar2')
+   <a  href="" class="fs navbar-brand text-white fw-bolder">
+         {{ __('msg.users') }} / {{ __('msg.voir_user') }}
+   </a>
+   
+@endsection

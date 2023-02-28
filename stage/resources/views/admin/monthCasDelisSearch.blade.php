@@ -10,11 +10,18 @@
                   <h5 class="text-end mt-2 py-2">{{ __('msg.date') }}</h5>
                   <input  class="form-control mb-5" type="date" name="search" id="search">
                   <div class="d-flex  justify-content-center align-items-center">
-                     <input class="btn bg-primary text-white" type="submit" value="envoyer" id="envoyer">
+                     <input class="btn bg-success text-white" type="submit" value="envoyer" id="envoyer">
                   </div>
                </div>
             </div>
          </form>
       </div>
    </div>
+@endsection
+
+@section('navbar2')
+   <a  href="" class="fs navbar-brand text-white fw-bolder">
+         {{ __('msg.cas_delis') }} / {{ __('msg.enter_date') }} 
+   </a>
+   
 @endsection

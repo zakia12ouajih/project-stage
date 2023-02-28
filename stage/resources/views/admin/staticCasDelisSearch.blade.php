@@ -20,3 +20,10 @@
       </div>
    </div>
 @endsection
+
+@section('navbar2')
+   <a  href="" class="fs navbar-brand text-white fw-bolder">
+         {{ __('msg.statistique') }} / {{ __('msg.statistic_cas_delis') }} / {{ __('msg.enter_date') }}
+   </a>
+   
+@endsection
