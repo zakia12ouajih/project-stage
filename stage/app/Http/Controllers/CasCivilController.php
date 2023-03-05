@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cas_civil;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,18 +14,42 @@ class CasCivilController extends Controller
     // admin * user
     public function ajouteCivil(Request $request)
     {
-        DB::table('cas_civils')->insert(
-            [
-                'reste_derniere_session' => $request->reste_derniere_session,
-                'inscrit' => $request->inscrit,
-                'somme' => $request->reste_derniere_session + $request->inscrit,
-                'comdamne' => $request->comdamne,
-                'reste_sans_jugement' => ($request->reste_derniere_session + $request->inscrit) - $request->comdamne,
-                'date' => $request->date,
-                'id_type' => $request->type,
-                'data_user_enter' => Auth::user()->userName,
-            ]
-        );
+        $lastOne = cas_civil::where('id_type', $request->type)->get('reste_sans_jugement')->last();
+        $current = Carbon::now();
+        $idTypeCount = cas_civil::where('id_type', "=", $request->type)->count();
+
+        
+        if ($idTypeCount == 0) {
+            DB::table('cas_civils')->insert(
+                [
+                    'reste_derniere_session' => $request->reste_derniere_session,
+                    'inscrit' => $request->inscrit,
+                    'somme' => $request->reste_derniere_session + $request->inscrit,
+                    'comdamne' => $request->comdamne,
+                    'reste_sans_jugement' => ($request->reste_derniere_session + $request->inscrit) - $request->comdamne,
+                    'date' => $current,
+                    'id_type' => $request->type,
+                    'data_user_enter' => Auth::user()->userName,
+                ]
+            );
+        } else {
+            // return 1;
+            DB::table('cas_civils')->insert(
+                [
+                    'reste_derniere_session' => $lastOne->reste_sans_jugement,
+                    'inscrit' => $request->inscrit,
+                    'somme' =>  $lastOne->reste_sans_jugement + $request->inscrit,
+                    'comdamne' => $request->comdamne,
+                    'reste_sans_jugement' => ($lastOne->reste_sans_jugement + $request->inscrit) - $request->comdamne,
+                    'date' => $current,
+                    'id_type' => $request->type,
+                    'data_user_enter' => Auth::user()->userName,
+                ]
+            );
+        }
+
+
+        
         
         $role = Auth::user()->role;
         if($role==1){
@@ -33,6 +58,13 @@ class CasCivilController extends Controller
         else{
             return redirect()->route('ajouter_civil_user')->with('success', '');
         }    
+    }
+
+    public function createCivilNew(Request $request)
+    {
+        $idTypeCount = cas_civil::where('id_type', "=", $request->type)->count();
+        $a = $_POST['type'];
+        return view('admin.formDonneeCivil2', compact("a", 'idTypeCount'));
     }
 
     // admin * user

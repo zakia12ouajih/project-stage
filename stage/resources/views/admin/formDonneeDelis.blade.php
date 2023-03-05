@@ -3,16 +3,9 @@
 @section('content')
    <div class="container">
       <div class="row justify-content-center">
-         @if (Session::has('success'))
-            <div class="alert alert-success alert-dismissible " role="alert">
-               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-               <strong>{{ __('msg.operation_accomplie_ave_Success') }}</strong> 
-            </div>
-            
-         @endif
          <div class="col-md-7">
             <div class="card py-4">
-               <form action="/admin/data_delis/add" method="POST">
+               <form action="/admin/data_delis/new" method="POST">
                   @csrf
                   <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
                      <div class="col-7">
@@ -20,37 +13,13 @@
                            <option value="" selected >{{ __('msg.choose') }}</option>
                            @foreach ($data as $d)
                            
-                           <option value="{{ $d->id }}">{{ $d->nom_type }}</option>
+                           <option value="{{ $d->id }}" >{{ $d->nom_type }}</option>
                            @endforeach
                         </select>
                      </div>
-                     <label for="" class="col-3 col-form-label text-md-end">{{ __('msg.cas1') }}</label>
-                  </div>
-                  <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
-                     <div class="col-7">
-                        <input id="reste_derniere_session" type="number" class="form-control text-end" name="reste_derniere_session"  />
-                     </div>
-                     <label for="reste_derniere_session" class="col-3 col-form-label text-md-end">{{ __('msg.reste_derniere_session') }}</label>
-                  </div>
-                  <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
-                     <div class="col-7">
-                        <input id="inscrit" type="number" class="form-control text-end " name="inscrit"  />
-                     </div>
-                     <label for="inscrit" class="col-3 col-form-label text-md-end">{{ __('msg.inscrit') }}</label>
-                  </div>
-                  <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
-                     <div class="col-7">
-                        <input id="comdamne" type="number" class="form-control text-end" name="comdamne"  />
-                     </div>
-                     <label for="comdamne" class="col-3 col-form-label text-md-end">{{ __('msg.comdamne') }}</label>
+                     <label for="type" class="col-3 col-form-label text-md-end">{{ __('msg.cas1') }}</label>
                   </div>
                   
-                  <div class="row mb-3 mt-3 d-flex justify-content-center align-items-center">
-                     <div class="col-7">
-                        <input id="date" type="date" class="form-control text-end" name="date"  />
-                     </div>
-                     <label for="date" class="col-3 col-form-label text-md-end">{{ __('msg.date') }}</label>
-                  </div>
                   <div class="row mb-0 mt-3 d-flex justify-content-center align-items-center">
                      <div class="col-7 offset-5">
                         <input class="btn btn-success" type="submit" value={{ __('msg.envoyer') }}>

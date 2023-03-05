@@ -46,6 +46,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::controller(CasCivilController::class)->group(function () {
         Route::post('/data_civil/add', 'ajouteCivil');
         Route::get('/data_civil', 'createCivil')->name('ajouter_civil');
+        Route::post('/data_civil/new', 'createCivilNew');
         Route::get('/voir_cas_civil', 'viewCasCivil')->name('viewCasCivil');
         Route::post('/voir_cas_civil/search', 'monthCasCivil');
         Route::get('/editCivil/{id}', 'editCivil');
@@ -58,6 +59,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::controller(CasDelisController::class)->group(function () {
         Route::post('/data_delis/add', 'ajouteDelis');
         Route::get('/data_delis', 'createDelis')->name('ajouter_delis');
+        Route::post('/data_delis/new', 'createDelisNew');
         Route::get('/voir_cas_delis', 'viewCasDelis')->name('viewCasDelisAdmin');
         Route::post('/voir_cas_delis/search', 'getData');
         Route::get('/editDelis/{id}', 'editDelis');
