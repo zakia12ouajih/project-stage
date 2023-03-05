@@ -33,7 +33,7 @@ class CasTypeController extends Controller
     }
     public function viewCas()
     {
-        $data = DB::table('cas_types')->paginate(5);
+        $data = DB::table('cas_types')->paginate(8);
         return view('admin.viewCas', compact('data'));
     }
 
