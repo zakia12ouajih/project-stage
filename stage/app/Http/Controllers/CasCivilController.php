@@ -18,7 +18,7 @@ class CasCivilController extends Controller
         $current = Carbon::now();
         $idTypeCount = cas_civil::where('id_type', "=", $request->type)->count();
 
-        
+
         if ($idTypeCount == 0) {
             DB::table('cas_civils')->insert(
                 [
@@ -71,8 +71,9 @@ class CasCivilController extends Controller
     public function viewCasCivil()
     {
         $role = Auth::user()->role;
+        $data2 = DB::table('cas_types')->where('genre', '=', 'civil')->get();
         if($role==1){
-            return view('admin.monthCasCivilSearch');
+            return view('admin.monthCasCivilSearch',compact('data2'));
         }
         else{
             return view('user.viewCasCivilSearch');
@@ -82,7 +83,7 @@ class CasCivilController extends Controller
 
     // admin
     public function monthCasCivil(Request $request){
-        $data = cas_civil::get()->where('date', '=', $request->input('search'));
+        $data = cas_civil::get()->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->where('id_type','=',$request->type);
         return view('admin.viewCasCivil',compact('data'));
 
     }

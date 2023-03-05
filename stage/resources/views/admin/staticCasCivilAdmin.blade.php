@@ -34,7 +34,7 @@
                   @endforeach
                </tbody>
             </table>
-            <table class="table table-hover table-bordered">
+            <table class="table table-hover table-bordered mt-3">
                <thead >
                   <tr class="table-primary">
                      <th class="text-center" scope="col">{{ __('msg.reste_sans_jugement') }}</th>

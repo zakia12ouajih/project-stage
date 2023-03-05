@@ -24,7 +24,7 @@
         
         
     </div>
-    <main class="py-2 mt-5">
+    <main class="py-2 mt-3">
         @yield('content')
     </main>
 </body>

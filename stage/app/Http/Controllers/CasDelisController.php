@@ -62,16 +62,18 @@ class CasDelisController extends Controller
 
     public function getData(Request $request)
     {
-        $data = cas_delis::get()->where('date', '=', $request->input('search'));
+        
+        $data = cas_delis::get()->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->where('id_type','=',$request->type);
         // return $data;
         return view('admin.viewCasDelis', compact('data'));
     }
 
     public function viewCasDelis()
     {
+        $data2 = DB::table('cas_types')->where('genre', '=', 'delis')->get();
         $role = Auth::user()->role;
         if ($role == 1) {
-            return view('admin.monthCasDelisSearch');
+            return view('admin.monthCasDelisSearch',compact('data2'));
         } else {
             return view('user.viewCasDélisSearch');
         }
