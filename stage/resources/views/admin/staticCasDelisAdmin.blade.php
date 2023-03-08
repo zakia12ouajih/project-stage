@@ -13,20 +13,20 @@
                      <th class="text-center" scope="col">{{ __('msg.somme') }}</th>
                      <th class="text-center" scope="col">{{ __('msg.inscrit') }}</th>
                      <th class="text-center" scope="col">{{ __('msg.reste_derniere_session') }}</th>
+                     <th class="text-center" scope="col">{{ __('msg.code_type') }}</th>
                      <th class="text-center" scope="col">{{ __('msg.cas1') }}</th>
-                     <th class="text-center" scope="col">{{ __('msg.date') }}</th>
                   </tr>
                </thead>
                <tbody class="text-center">
                   @foreach ($data as $d)
                      <tr>
-                        <td>{{ $d->reste_sans_jugement }}</td>
-                        <td>{{ $d->comdamne }}</td>
-                        <td>{{ $d->somme }}</td>
-                        <td>{{ $d->inscrit }}</td>
-                        <td>{{ $d->reste_derniere_session }}</td>
+                        <td>{{ $d->sumRSJ }}</td>
+                        <td>{{ $d->sumComdamne }}</td>
+                        <td>{{ $d->sumSum }}</td>
+                        <td>{{ $d->sumInscrit }}</td>
+                        <td>{{ $d->sumRest }}</td>
+                        <td>{{ $d->cas_type->code_type}}</td> 
                         <td>{{ $d->cas_type->nom_type}}</td> 
-                        <td>{{ $d->date }}</td>
                      </tr>
                   @endforeach
                </tbody>
@@ -42,13 +42,15 @@
                   </tr>
                </thead>
                <tbody class="text-center">
-                  <tr>
-                     <td>{{ $sommeRSJ }}</td>
-                     <td>{{ $sommeinscrit }}</td>
-                     <td>{{ $sommeSum  }}</td>
-                     <td>{{ $sommecomdamne }}</td>
-                     <td>{{$sommerest }}</td>
-                  </tr>
+                  @foreach ($somme as $s)
+                     <tr>
+                        <td>{{ $s->finalRSJ }}</td>
+                        <td>{{ $s->finalComdamne }}</td>
+                        <td>{{ $s->finalSomme  }}</td>
+                        <td>{{ $s->finalInscrit }}</td>
+                        <td>{{$s->finalRest }}</td> 
+                     </tr>
+                  @endforeach
                </tbody>
             </table>  
          </div>

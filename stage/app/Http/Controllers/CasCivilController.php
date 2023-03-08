@@ -101,6 +101,7 @@ class CasCivilController extends Controller
             'id_type' => $request->type,
             'data_user_enter' => Auth::user()->userName,
         ]);
+        
         $role = Auth::user()->role;
         if($role==1){
             return redirect()->route('viewCasCivil')->with('success' ,'');
@@ -131,39 +132,40 @@ class CasCivilController extends Controller
     
     // admin *user
     public function statisticC(Request $request){
-        $data = cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->get();
-        $sommeTable=cas_civil::count();
-        $sommerest=0;
-        $sommeinscrit=0;
-        $sommeSum=0;
-        $sommecondamne=0;
-        $sommeRSJ=0;
-        for ($i=0; $i <=$sommeTable ; $i++) { 
+        
+
+        $data = cas_civil::select(
+            DB::raw('sum(reste_derniere_session) as sumRest'), 
+            DB::raw('sum(inscrit) as sumInscrit'),
+            DB::raw('sum(somme) as sumSum'),
+            DB::raw('sum(comdamne) as sumComdamne'),
+            DB::raw('sum(reste_sans_jugement) as sumRSJ'),
+            DB::raw('id_type')
+        )
+        ->with('cas_type')
+        ->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])
+        ->groupBy('id_type')
+        ->get();
+        
+        $somme = cas_civil::select(
+            DB::raw('sum(reste_derniere_session) as finalRest'),
+            DB::raw('sum(inscrit) as finalInscrit'),
+            DB::raw('sum(somme) as finalSomme'),
+            DB::raw('sum(comdamne) as finalComdamne'),
+            DB::raw('sum(reste_sans_jugement) as finalRSJ')
+        )
+        ->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])
+        ->get();
+        
             
-            $sommerest= cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('reste_derniere_session');
-        }
-        for ($i=0; $i <=$sommeTable ; $i++) { 
-            
-            $sommeinscrit= cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('inscrit');
-        }
-        for ($i=0; $i <=$sommeTable ; $i++) { 
-            
-            $sommeSum= cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('somme');
-        }
-        for ($i=0; $i <=$sommeTable ; $i++) { 
-            
-            $sommecomdamne= cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('comdamne');
-        }
-        for ($i=0; $i <=$sommeTable ; $i++) { 
-            
-            $sommeRSJ= cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')])->sum('reste_sans_jugement');
-        }
+            // $sommeRSJ= cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')]);
+        
         // return $data;
         $role = Auth::user()->role;
         if ($role == 1) {
-            return view('admin.staticCasCivilAdmin', compact('data','sommerest','sommeinscrit','sommeSum','sommecomdamne','sommeRSJ'));
+            return view('admin.staticCasCivilAdmin', compact('data','somme'));
         } else {
-            return view('user.staticCasCivilUser', compact('data','sommerest','sommeinscrit','sommeSum','sommecomdamne','sommeRSJ'));
+            return view('user.staticCasCivilUser', compact('data', 'somme'));
         }  
         
     }

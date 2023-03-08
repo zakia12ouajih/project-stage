@@ -84,41 +84,45 @@ class CasDelisController extends Controller
         // return $data;
         return view('user.UsviewCasD ', compact('data'));
     }
+
+
     public function statisticD(Request $request)
     {
-        $data = cas_delis::with('cas_type')->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->get();
-        $sommeTable = cas_delis::count();
-        $sommerest = 0;
-        $sommeinscrit = 0;
-        $sommeSum = 0;
-        $sommecondamne = 0;
-        $sommeRSJ = 0;
-        for ($i = 0; $i <= $sommeTable; $i++) {
+        $data = cas_delis::select(
+            DB::raw('sum(reste_derniere_session) as sumRest'),
+            DB::raw('sum(inscrit) as sumInscrit'),
+            DB::raw('sum(somme) as sumSum'),
+            DB::raw('sum(comdamne) as sumComdamne'),
+            DB::raw('sum(reste_sans_jugement) as sumRSJ'),
+            DB::raw('id_type')
+        )
+        ->with('cas_type')
+        ->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])
+        ->groupBy('id_type')
+        ->get();
 
-            $sommerest = cas_delis::with('cas_type')->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->sum('reste_derniere_session');
-        }
-        for ($i = 0; $i <= $sommeTable; $i++) {
+        $somme = cas_Delis::select(
+            DB::raw('sum(reste_derniere_session) as finalRest'),
+            DB::raw('sum(inscrit) as finalInscrit'),
+            DB::raw('sum(somme) as finalSomme'),
+            DB::raw('sum(comdamne) as finalComdamne'),
+            DB::raw('sum(reste_sans_jugement) as finalRSJ')
+        )
+        ->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])
+        ->get();
 
-            $sommeinscrit = cas_delis::with('cas_type')->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->sum('inscrit');
-        }
-        for ($i = 0; $i <= $sommeTable; $i++) {
 
-            $sommeSum = cas_delis::with('cas_type')->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->sum('somme');
-        }
-        for ($i = 0; $i <= $sommeTable; $i++) {
 
-            $sommecomdamne = cas_delis::with('cas_type')->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->sum('comdamne');
-        }
-        for ($i = 0; $i <= $sommeTable; $i++) {
-
-            $sommeRSJ = cas_delis::with('cas_type')->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->sum('reste_sans_jugement');
-        }
+        
+        
+        
+        
         // return $data;
         $role = Auth::user()->role;
         if ($role == 1) {
-            return view('admin.staticCasDelisAdmin', compact('data', 'sommerest', 'sommeinscrit', 'sommeSum', 'sommecomdamne', 'sommeRSJ'));
+            return view('admin.staticCasDelisAdmin', compact('data','somme'));
         } else {
-            return view('user.staticCasDelisUser', compact('data', 'sommerest', 'sommeinscrit', 'sommeSum', 'sommecomdamne', 'sommeRSJ'));
+            return view('user.staticCasDelisUser', compact('data', 'somme'));
         }
     }
 
