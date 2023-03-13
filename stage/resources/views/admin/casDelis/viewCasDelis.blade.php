@@ -3,7 +3,7 @@
 @section('content')
    <div class="row justify-content-center">
    <div class="col-md-8">
-      <h4 class="fw-bolder text-center mb-3">{{ __('msg.voir_cas_civil') }}</h4>
+      <h4 class="fw-bolder text-center mb-3">{{ __('msg.voir_cas_delis') }}</h4>
       <table class="table table-hover table-bordered">
          <thead >
             <tr class="table-primary">
@@ -22,8 +22,8 @@
          <tbody class="text-center">
             @foreach ($data as $d)
                <tr>
-                  <td><a href="{{ URL('/admin/destroyCivil',$d->id) }}"><button class='btn btn-danger'>{{ __('msg.supprimer') }}</button></a></td>
-                  <td><a href="{{ URL('/admin/editCivil',$d->id) }}"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
+                  <td><a href="{{ URL('/admin/destroyDelis',$d->id) }}"><button class='btn btn-danger'>{{ __('msg.supprimer') }}</button></a></td>
+                  <td><a href="#modalId{{ $d->id }}"  data-bs-toggle="modal"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
                   <td>{{ $d->reste_sans_jugement }}</td>
                   <td>{{ $d->comdamne }}</td>
                   <td>{{ $d->somme }}</td>
@@ -31,20 +31,25 @@
                   <td>{{ $d->reste_derniere_session }}</td>
                   <td>{{ $d->date }}</td>
                   <td>{{ $d->data_user_enter }}</td>
-                  <td>{{ $d->cas_type->nom_type}}</td> 
+                  <td>{{ $d->cas_type->nom_type}}</td>
+                  @include('admin.casDelis.editCasDelis')
+                  
+                  
+
                </tr>
             @endforeach
          </tbody>
       </table>
-      {{-- <div class="d-flex justify-content-center align-items-center">{{ $data->links() }}</div> --}}
+      {{-- <div class="d-flex justify-content-center align-items-center">
+         {{ $data->links() }}
+      </div> --}}
    </div>
 </div>
 @endsection
 
-
 @section('navbar2')
    <a  href="" class="fs navbar-brand text-white fw-bolder">
-         {{ __('msg.cas_civil') }} 
+         {{ __('msg.cas_delis') }} 
    </a>
    
 @endsection

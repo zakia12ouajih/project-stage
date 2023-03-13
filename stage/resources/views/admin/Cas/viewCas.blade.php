@@ -3,7 +3,15 @@
 @section('content')
 <div class="row justify-content-center">
    <div class="col-md-8">
-      <h4 class="fw-bolder text-center mb-4">{{ __('msg.voir_cas') }}</h4>
+      <div class='row justify-content-between'>
+            <div class="col-6">
+               <a href="/admin/form" data-bs-toggle="modal" data-bs-target="#modalCasFrom"> <button class="btn btn-primary mb-3">{{ __('msg.ajouter_cas') }}</button></a>
+               @include('admin.cas.formCas')
+            </div>
+            <div class="col-6">
+               <h4 class="fw-bolder text-end">{{ __('msg.cas') }}</h4>
+            </div>
+         </div>
       <table class="table table-hover table-bordered">
          <thead >
             <tr class="table-primary">
@@ -18,10 +26,11 @@
             @foreach ($data as $d)
                <tr>
                   <td><a href="{{ URL('/admin/destroy',$d->id) }}"><button class='btn btn-danger'>{{ __('msg.supprimer') }}</button></a></td>
-                  <td><a href="{{ URL('/admin/edit',$d->id) }}"><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
+                  <td><a href="#modalCasEdit{{ $d->id }}"  data-bs-toggle="modal" ><button class='btn btn-primary'>{{ __('msg.modifier') }}</button></a></td>
                   <td>{{ $d->code_type }}</td>
                   <td>{{ $d->nom_type }}</td>
                   <td>{{ $d->genre }}</td>
+                  @include('admin.cas.editCas')
                </tr>
             @endforeach
          </tbody>

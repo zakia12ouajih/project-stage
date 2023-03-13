@@ -34,9 +34,6 @@ class UserController extends Controller
 
     
 
-    public function returnView(){
-        return view('admin.registerUserAdmin');
-    }
 
     
     
@@ -44,7 +41,7 @@ class UserController extends Controller
 
     public function viewUsers(Request $request){
         $data = DB::table('users')->paginate(5);
-        return view('admin.viewUsers', compact('data'));
+        return view('admin.user.viewUsers', compact('data'));
     }
 
 
@@ -52,7 +49,7 @@ class UserController extends Controller
     public function editUser($id)
     {
         $modiUser = DB::table('users')->where('id', $id)->first();
-        return view('admin.editUser', compact('modiUser'));
+        return view('admin.user.editUser', compact('modiUser'));
     }
 
 

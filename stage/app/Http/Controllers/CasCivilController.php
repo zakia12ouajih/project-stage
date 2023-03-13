@@ -15,7 +15,6 @@ class CasCivilController extends Controller
     public function ajouteCivil(Request $request)
     {
         $lastOne = cas_civil::where('id_type', $request->type)->get('reste_sans_jugement')->last();
-        $current = Carbon::now();
         $idTypeCount = cas_civil::where('id_type', "=", $request->type)->count();
 
 
@@ -27,7 +26,7 @@ class CasCivilController extends Controller
                     'somme' => $request->reste_derniere_session + $request->inscrit,
                     'comdamne' => $request->comdamne,
                     'reste_sans_jugement' => ($request->reste_derniere_session + $request->inscrit) - $request->comdamne,
-                    'date' => $current,
+                    'date' => $request->date,
                     'id_type' => $request->type,
                     'data_user_enter' => Auth::user()->userName,
                 ]
@@ -41,7 +40,7 @@ class CasCivilController extends Controller
                     'somme' =>  $lastOne->reste_sans_jugement + $request->inscrit,
                     'comdamne' => $request->comdamne,
                     'reste_sans_jugement' => ($lastOne->reste_sans_jugement + $request->inscrit) - $request->comdamne,
-                    'date' => $current,
+                    'date' => $request->date,
                     'id_type' => $request->type,
                     'data_user_enter' => Auth::user()->userName,
                 ]
@@ -64,16 +63,17 @@ class CasCivilController extends Controller
     {
         $idTypeCount = cas_civil::where('id_type', "=", $request->type)->count();
         $a = $_POST['type'];
-        return view('admin.formDonneeCivil2', compact("a", 'idTypeCount'));
+        return view('admin.casCivils.formDonneeCivil2', compact("a", 'idTypeCount'));
     }
 
     // admin * user
-    public function viewCasCivil()
+    public function viewCasCivil(Request $request)
     {
         $role = Auth::user()->role;
         $data2 = DB::table('cas_types')->where('genre', '=', 'civil')->get();
+        // $modi = DB::table('cas_civils')->where('id', $request->id)->first();
         if($role==1){
-            return view('admin.monthCasCivilSearch',compact('data2'));
+            return view('admin.casCivils.monthCasCivilSearch',compact('data2'));
         }
         else{
             return view('user.viewCasCivilSearch');
@@ -84,7 +84,8 @@ class CasCivilController extends Controller
     // admin
     public function monthCasCivil(Request $request){
         $data = cas_civil::get()->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->where('id_type','=',$request->type);
-        return view('admin.viewCasCivil',compact('data'));
+        
+        return view('admin.casCivils.viewCasCivil',compact('data'));
 
     }
 
@@ -98,13 +99,14 @@ class CasCivilController extends Controller
             'comdamne' => $request->comdamne,
             'reste_sans_jugement' => ($request->reste_derniere_session + $request->inscrit) - $request->comdamne,
             'date' => $request->date,
-            'id_type' => $request->type,
             'data_user_enter' => Auth::user()->userName,
         ]);
         
+        
+        
         $role = Auth::user()->role;
         if($role==1){
-            return redirect()->route('viewCasCivil')->with('success' ,'');
+            return redirect()->route('viewCasCivil');
         }
         else{
             return redirect()->route('viewCasCivil_user')->with('success', '');
@@ -116,7 +118,7 @@ class CasCivilController extends Controller
     public function staticCasCivil(){
         $role = Auth::user()->role;
         if ($role == 1) {
-            return view('admin.staticCasCivilAdminSearch');
+            return view('admin.casCivils.staticCasCivilAdminSearch');
         } else {
             return view('user.staticCasCivilUserSearch');
         }  
@@ -158,12 +160,10 @@ class CasCivilController extends Controller
         ->get();
         
             
-            // $sommeRSJ= cas_civil::with('cas_type')->whereBetween('date',[$request->input('datefrom'),$request->input('dateto')]);
         
-        // return $data;
         $role = Auth::user()->role;
         if ($role == 1) {
-            return view('admin.staticCasCivilAdmin', compact('data','somme'));
+            return view('admin.casCivils.staticCasCivilAdmin', compact('data','somme'));
         } else {
             return view('user.staticCasCivilUser', compact('data', 'somme'));
         }  
@@ -184,7 +184,7 @@ class CasCivilController extends Controller
         $data = DB::table('cas_types')->where('genre', '=', 'civil')->get();
         $role = Auth::user()->role;
         if($role==1){
-            return view('admin.formDonneeCivil', compact('data'));
+            return view('admin.casCivils.formDonneeCivil', compact('data'));
         }
         else{
             return view('user.UsformDonneeC', compact('data'));
@@ -207,9 +207,7 @@ class CasCivilController extends Controller
     // admin
     public function editCivil($id)
     {
-        $modi = DB::table('cas_civils')->where('id', $id)->first();
-        $data = DB::table('cas_types')->where('genre', '=', 'civil')->get();
-        return view('admin.editCasCivil', compact('modi', 'data'));
+        // 
     }
 
     

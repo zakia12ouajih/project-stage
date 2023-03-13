@@ -17,7 +17,6 @@
 @section('crud_cas')
       <h5 class="h5"><a href="#" class="fw-bolder alien collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right " data-bs-toggle="collapse" data-bs-target="#demo2">{{ __('msg.cas') }}</a></h5>
       <div id="demo2" class="collapse py-1">
-         <h5><a class="t5 dropdown-item text-center" href='/admin/form'>{{ __('msg.ajouter_cas') }}</a></h5>
          <h5><a class="t5 dropdown-item text-center" href='/admin/aff_table'>{{ __('msg.voir_cas') }}</a></h5>
       </div> 
 @endsection
@@ -50,7 +49,7 @@
    @section('voir_les_utilisateurs')
    <h5 class="h5"><a href="#" class="fw-bolder alien collapse nav-link text-center dropdown-toggle d-flex justify-content-center  align-items-center text-right " data-bs-toggle="collapse" data-bs-target="#demo6">{{ __('msg.users') }}</a></h5>
    <div id="demo6" class="collapse py-1">
-      <h5><a class="t5 dropdown-item text-center" href='/admin/createUser'>{{ __('msg.ajouter_user') }}</a></h5>
+      {{-- <h5><a class="t5 dropdown-item text-center" href='/admin/createUser'>{{ __('msg.ajouter_user') }}</a></h5> --}}
       <h5><a class="t5 dropdown-item text-center" href="/admin/voir_user">{{ __('msg.voir_user') }}</a></h5>
    </div> 
 @endsection

@@ -20,7 +20,7 @@ class CasTypeController extends Controller
                 'genre' =>$request->genre,
             ]
         );
-        return redirect()->Route('ajouter_cas');
+        return redirect()->back();
     }
     /**
      * Display a listing of the resource.
@@ -33,8 +33,8 @@ class CasTypeController extends Controller
     }
     public function viewCas()
     {
-        $data = DB::table('cas_types')->paginate(8);
-        return view('admin.viewCas', compact('data'));
+        $data = DB::table('cas_types')->paginate(5);
+        return view('admin.cas.viewCas', compact('data'));
     }
 
     public function modifier(Request $request, $id)
@@ -55,7 +55,7 @@ class CasTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.formCas');
+        return view('admin.cas.formCas');
     }
 
     /**
@@ -89,7 +89,7 @@ class CasTypeController extends Controller
     public function edit($id)
     {
         $modi = DB::table('cas_types')->where('id', $id)->first();
-        return view('admin.editCas', compact('modi'));
+        return view('admin.cas.editCas', compact('modi'));
     }
 
     /**

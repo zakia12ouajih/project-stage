@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
+
 use App\Models\cas_delis;
 use App\Http\Requests\Storecas_delisRequest;
 use App\Http\Requests\Updatecas_delisRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class CasDelisController extends Controller
@@ -17,7 +16,7 @@ class CasDelisController extends Controller
     public function ajouteDelis(Request $request)
     {
         $lastOne = cas_delis::where('id_type', $request->type)->get('reste_sans_jugement')->last();
-        $current = Carbon::now();
+        
         $idTypeCount = cas_delis::where('id_type', "=", $request->type)->count();
 
         
@@ -31,7 +30,7 @@ class CasDelisController extends Controller
                     'somme' => $request->reste_derniere_session + $request->inscrit,
                     'comdamne' => $request->comdamne,
                     'reste_sans_jugement' => ($request->reste_derniere_session + $request->inscrit) - $request->comdamne,
-                    'date' => $current,
+                    'date' => $request->date,
                     'id_type' => $request->type,
                     'data_user_enter' => Auth::user()->userName,
                 ]
@@ -45,7 +44,7 @@ class CasDelisController extends Controller
                     'somme' =>  $lastOne->reste_sans_jugement + $request->inscrit,
                     'comdamne' => $request->comdamne,
                     'reste_sans_jugement' => ($lastOne->reste_sans_jugement + $request->inscrit) - $request->comdamne,
-                    'date' => $current,
+                    'date' => $request->date,
                     'id_type' => $request->type,
                     'data_user_enter' => Auth::user()->userName,
                 ]
@@ -65,7 +64,7 @@ class CasDelisController extends Controller
         
         $data = cas_delis::get()->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])->where('id_type','=',$request->type);
         // return $data;
-        return view('admin.viewCasDelis', compact('data'));
+        return view('admin.casDelis.viewCasDelis', compact('data'));
     }
 
     public function viewCasDelis()
@@ -73,7 +72,7 @@ class CasDelisController extends Controller
         $data2 = DB::table('cas_types')->where('genre', '=', 'delis')->get();
         $role = Auth::user()->role;
         if ($role == 1) {
-            return view('admin.monthCasDelisSearch',compact('data2'));
+            return view('admin.casDelis.monthCasDelisSearch',compact('data2'));
         } else {
             return view('user.viewCasDélisSearch');
         }
@@ -110,17 +109,10 @@ class CasDelisController extends Controller
         )
         ->whereBetween('date', [$request->input('datefrom'), $request->input('dateto')])
         ->get();
-
-
-
         
-        
-        
-        
-        // return $data;
         $role = Auth::user()->role;
         if ($role == 1) {
-            return view('admin.staticCasDelisAdmin', compact('data','somme'));
+            return view('admin.casDelis.staticCasDelisAdmin', compact('data','somme'));
         } else {
             return view('user.staticCasDelisUser', compact('data', 'somme'));
         }
@@ -142,7 +134,7 @@ class CasDelisController extends Controller
     public function createDelisNew(Request $request){
         $idTypeCount = cas_delis::where('id_type', "=", $request->type)->count();
         $a = $_POST['type'];
-        return view('admin.formDonneeDelis2',compact("a",'idTypeCount'));
+        return view('admin.casDelis.formDonneeDelis2',compact("a",'idTypeCount'));
     }
     public function createDelis()
     {
@@ -150,7 +142,7 @@ class CasDelisController extends Controller
         $data = DB::table('cas_types')->where('genre', '=', 'delis')->get();
         $role = Auth::user()->role;
         if ($role == 1) {
-            return view('admin.formDonneeDelis', compact('data'));
+            return view('admin.casDelis.formDonneeDelis', compact('data'));
         } else {
             return view('user.UsformDonneeD', compact('data'));
         }
@@ -165,7 +157,6 @@ class CasDelisController extends Controller
             'comdamne' => $request->comdamne,
             'reste_sans_jugement' => ($request->reste_derniere_session + $request->inscrit) - $request->comdamne,
             'date' => $request->date,
-            'id_type' => $request->type,
             'data_user_enter' => Auth::user()->userName,
         ]);
         $role = Auth::user()->role;
@@ -179,7 +170,7 @@ class CasDelisController extends Controller
     {
         $role = Auth::user()->role;
         if ($role == 1) {
-            return view('admin.staticCasDelisSearch');
+            return view('admin.casDelis.staticCasDelisSearch');
         } else {
 
             return view('user.staticCasDelisUserSearch');
@@ -216,9 +207,7 @@ class CasDelisController extends Controller
      */
     public function editDelis($id)
     {
-        $modi = DB::table('cas_delis')->where('id', $id)->first();
-        $data = DB::table('cas_types')->where('genre', '=', 'delis')->get();
-        return view('admin.editCasDelis', compact('modi', 'data'));
+        
     }
 
     /**

@@ -27,22 +27,15 @@ Route::get('/', function () {
 
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::controller(UserController::class)->group(function(){
-        Route::get('/createUser','returnView');
-        Route::post('/addUser','register');
         Route::get('voir_user','viewUsers')->name('viewAdminUser');
-        Route::get('/editUser/{id}','editUser');
-        Route::put('/modiUser/{id}','modifierUser');
         Route::get('/destroyUser/{id}','destroyUser');
     });
 
     Route::controller(CasTypeController::class)->group(function () {
-        Route::get('/form', 'create')->name('ajouter_cas');
-        Route::post('/form/add', 'ajoute');
         Route::get('/aff_table', 'viewCas')->name('viewCas');
-        Route::get('/edit/{id}', 'edit');
-        Route::put('/mod/{id}', 'modifier');
         Route::get('/destroy/{id}', 'destroy');
     });
+
     Route::controller(CasCivilController::class)->group(function () {
         Route::post('/data_civil/add', 'ajouteCivil');
         Route::get('/data_civil', 'createCivil')->name('ajouter_civil');
@@ -54,8 +47,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('/destroyCivil/{id}', 'destroyCivil');
         Route::get('/staticCasCivilAdmin', 'staticCasCivil');
         Route::post('/staticCasCivilAdmin/search', 'statisticC');
-        
     });
+
     Route::controller(CasDelisController::class)->group(function () {
         Route::post('/data_delis/add', 'ajouteDelis');
         Route::get('/data_delis', 'createDelis')->name('ajouter_delis');
